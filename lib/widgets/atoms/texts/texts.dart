@@ -1,0 +1,13 @@
+export './headlinetext1_atom.dart';
+export './headlinetext2_atom.dart';
+export './headlinetext3_atom.dart';
+export './headlinetext4_atom.dart';
+export './headlinetext5_atom.dart';
+export './headlinetext6_atom.dart';
+export './subtitletext1_atom.dart';
+export './subtitletext2_atom.dart';
+export './bodytext1_atom.dart';
+export './bodytext2_atom.dart';
+export './buttontext_atom.dart';
+export './captiontext_atom.dart';
+export './overlinetext_atom.dart';

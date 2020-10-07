@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "396269733090",
+    "firebase_url": "https://alumina-interior.firebaseio.com",
+    "project_id": "alumina-interior",
+    "storage_bucket": "alumina-interior.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:396269733090:android:af34753ae2607b833e0abb",
+        "android_client_info": {
+          "package_name": "com.alamaziis.alumina"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "396269733090-eqml1jt035ib3ffi793ho4oul80ij4ot.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB877lJZgjEUzml0fVuebEGJLkKYzI0mn8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "396269733090-eqml1jt035ib3ffi793ho4oul80ij4ot.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
