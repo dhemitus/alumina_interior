@@ -151,7 +151,11 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       key: _scaffoldState,
       body: SafeArea(
-        child: LoginOption()
+        child: Column(
+          children: [
+            RegisterProfileForm()
+          ],
+        )
       ),
     );
   }
