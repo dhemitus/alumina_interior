@@ -4,6 +4,7 @@ import 'package:alumina/shared/shared.dart' as Styles;
 
 final Widget arrowleft = SvgPicture.asset('assets/svgs/arrow-left-icon.svg', semanticsLabel: 'arrow left', color: Styles.orangeE23C18,);
 final Widget arrowight = SvgPicture.asset('assets/svgs/arrow-right-icon.svg', semanticsLabel: 'arrow right', color: Styles.orangeE23C18);
+final Widget arrowight2D415F = SvgPicture.asset('assets/svgs/arrow-right-icon.svg', semanticsLabel: 'arrow right', color: Styles.blue2D415F);
 final Widget eyeoff = SvgPicture.asset('assets/svgs/eye-off-icon.svg', semanticsLabel: 'eye off', color: Styles.orangeE23C18);
 final Widget eyeoffFFE9E4 = SvgPicture.asset('assets/svgs/eye-off-icon.svg', semanticsLabel: 'eye off', color: Styles.orangeFFE9E4);
 final Widget facebook = SvgPicture.asset('assets/svgs/facebook-icon.svg', semanticsLabel: 'facebook', color: Styles.orangeE23C18);
@@ -23,6 +24,7 @@ final Widget messagesquare = SvgPicture.asset('assets/svgs/message-square-icon.s
 final Widget messagecircle = SvgPicture.asset('assets/svgs/message-circle-icon.svg', semanticsLabel: 'message circle', color: Styles.orangeE23C18);
 final Widget settings = SvgPicture.asset('assets/svgs/settings-icon.svg', semanticsLabel: 'settings', color: Styles.orangeE23C18);
 final Widget smartphone = SvgPicture.asset('assets/svgs/smartphone-icon.svg', semanticsLabel: 'smartphone', color: Styles.orangeE23C18);
+final Widget smartphoneDDE9FB = SvgPicture.asset('assets/svgs/smartphone-icon.svg', semanticsLabel: 'smartphone', color: Styles.blueDDE9FB);
 final Widget user = SvgPicture.asset('assets/svgs/user-icon.svg', semanticsLabel: 'user', color: Styles.orangeE23C18);
 
 final Widget logo = SvgPicture.asset('assets/svgs/logo.svg', semanticsLabel: 'logo');

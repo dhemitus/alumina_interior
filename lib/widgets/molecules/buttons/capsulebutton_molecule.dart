@@ -8,20 +8,23 @@ class CapsuleButton extends StatelessWidget {
   final String text;
   final Widget icon;
   final bool dark;
+  final double width, height;
 
-  CapsuleButton({this.onTap, this.text = '', this.icon, this.dark = true});
+  CapsuleButton({this.onTap, this.text = '', this.icon, this.width, this.height, this.dark = true});
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () => onTap(context),
       child: SizedBox(
-        height: 32.0.w,
+        height: height != null ? height : 32.0.w,
+        width: width,
         child: BaseContainer(
             radius: BorderRadius.circular(32.0.w),
             color: dark ? Styles.blue7083A0 : Colors.white,
+            padding: EdgeInsets.symmetric(horizontal: 14.0.w),
             child: icon != null ? Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 CaptionText(text, color: Styles.blue2D415F,),
                 Padding(

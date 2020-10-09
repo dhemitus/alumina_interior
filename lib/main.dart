@@ -153,7 +153,7 @@ class _MyHomePageState extends State<MyHomePage> {
       body: SafeArea(
         child: Column(
           children: [
-            RegisterProfileForm()
+            RegisterPhoneForm()
           ],
         )
       ),
