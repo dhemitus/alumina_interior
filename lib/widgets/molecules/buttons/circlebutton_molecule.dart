@@ -28,7 +28,11 @@ class CircleButton extends StatelessWidget {
             child: BaseContainer(
               alignment: Alignment.center,
               radius: small ? BorderRadius.circular(32.0.w) : BorderRadius.circular(96.0.w),
-              color: color != null ? color : Styles.blue7083A0,
+              border: Border.all(
+                  color: color != null ? color : Styles.blueAEC0DB,
+                  width: 1.0.w
+              ),
+//              color: color != null ? color : Styles.blue7083A0,
               child: (icon != null) ? SizedBox(
                   width: 18.0.w,
                   height: 18.0.w,
@@ -43,7 +47,11 @@ class CircleButton extends StatelessWidget {
         child: BaseContainer(
           alignment: Alignment.center,
           radius: small ? BorderRadius.circular(32.0.w) : BorderRadius.circular(96.0.w),
-          color: color != null ? color : Styles.blue7083A0,
+          border: Border.all(
+              color: color != null ? color : Styles.blueAEC0DB,
+              width: 1.0.w
+          ),
+//          color: color != null ? color : Styles.blue7083A0,
           child: (icon != null) ?  SizedBox(
               width: 24.0.w,
               height: 24.0.w,

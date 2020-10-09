@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:alumina/widgets/molecules/buttons/circlebutton_molecule.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
@@ -224,6 +225,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   },
                 ),
               ),
+              CircleButton()
             ],
           ),
         ),
