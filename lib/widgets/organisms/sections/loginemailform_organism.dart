@@ -14,15 +14,11 @@ class _LoginEmailFormState extends State<LoginEmailForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 32.0.w, bottom: 30.0.w),
+      padding: EdgeInsets.only(bottom: 32.0.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          ContentHeader(
-            head: 'gunakan e-mail aktif anda untuk masuk atau registrasi',
-            body: 'pastikan anda mengingat kata sandi anda',
-          ),
-          SizedBox(height: 142.0.w,),
+//          SizedBox(height: 142.0.w,),
           InputText(
             mode: Styles.StyleType.warning,
             hint: 'e-mail',

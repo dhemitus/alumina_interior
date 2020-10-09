@@ -16,6 +16,7 @@ class ContentHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         BodyText2(head),
+        SizedBox(height: 14.0.w,),
         SubtitleText2(body),
       ],
     );

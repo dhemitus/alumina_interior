@@ -4,28 +4,23 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/shared/shared.dart' as Iconic;
 
-class RegisterPhoneForm extends StatefulWidget {
+class RegisterKeyForm extends StatefulWidget {
   @override
-  _RegisterPhoneFormState createState() => _RegisterPhoneFormState();
+  _RegisterKeyFormState createState() => _RegisterKeyFormState();
 }
 
-class _RegisterPhoneFormState extends State<RegisterPhoneForm> {
+class _RegisterKeyFormState extends State<RegisterKeyForm> {
   @override
   Widget build(BuildContext context) {
     return BaseContainer(
       padding: EdgeInsets.only(top: 32.0.w, bottom: 30.0.w),
       child: InputText(
-        preffix: BaseContainer(
-            width: 16.0.w,
-            height: 16.0.w,
-            child: Iconic.smartphoneDDE9FB
-        ),
-        hint: 'phone number',
+        hint: 'secret key',
         suffix: BaseContainer(
           width: 100.0.w,
           height: 32.0.w,
           child: CapsuleButton(
-            text: 'Kirim',
+            text: 'Selesai',
             width: 100.0.w,
             icon: Iconic.arrowight2D415F,
           ),

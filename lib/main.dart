@@ -147,17 +147,17 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Utils.initScreen(context);
-
-    return Scaffold(
+      return ProfileRegisterPage();
+/*    return Scaffold(
       key: _scaffoldState,
       body: SafeArea(
         child: Column(
           children: [
-            RegisterPhoneForm()
+            RegisterProfileForm()
           ],
         )
       ),
-    );
+    );*/
   }
   void _navigateToDetailPage() {
     print('go');

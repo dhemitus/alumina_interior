@@ -13,19 +13,10 @@ class _RegisterProfileFormState extends State<RegisterProfileForm> {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(top: 32.0.w, bottom: 30.0.w),
+      padding: EdgeInsets.only(bottom: 32.0.w),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          CircleButton(
-            icon: Iconic.imageDDE9FB,
-          ),
-          SizedBox(height: 68.0.w,),
-          ContentHeader(
-            head: 'isilah dengan data yang benar dan akurat ',
-            body: 'pastikan terisi semua kolom-kolom di bawah ini',
-          ),
-          SizedBox(height: 16.0.w,),
           InputText(
             label: 'nama depan',
           ),
