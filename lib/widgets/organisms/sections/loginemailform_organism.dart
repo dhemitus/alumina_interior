@@ -18,7 +18,6 @@ class _LoginEmailFormState extends State<LoginEmailForm> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-//          SizedBox(height: 142.0.w,),
           InputText(
             mode: Styles.StyleType.warning,
             hint: 'e-mail',
