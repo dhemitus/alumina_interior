@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
-import 'package:alumina/shared/shared.dart' as Iconic;
 
 class ContentHeader extends StatelessWidget {
   final String head;

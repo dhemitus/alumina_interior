@@ -40,18 +40,16 @@ class InputText extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color color, border;
+    Color border;
+
     switch(mode) {
       case Styles.StyleType.primary:
-        color = Styles.blueDDE9FB;
         border = Styles.blueDDE9FB;
         break;
       case Styles.StyleType.secondary:
-        color = Styles.blue2D415F;
         border = Styles.blue2D415F;
         break;
       case Styles.StyleType.warning:
-        color = Styles.orangeFFE9E4;
         border = Styles.orangeFFE9E4;
         break;
     }

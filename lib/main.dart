@@ -1,11 +1,8 @@
-import 'dart:io';
-import 'package:alumina/widgets/molecules/buttons/circlebutton_molecule.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/shared/shared.dart' as Utils;
-import 'package:alumina/shared/shared.dart' as Styles;
 
 Future<void> main() async {
   Utils.initSystem();
@@ -158,8 +155,5 @@ class _MyHomePageState extends State<MyHomePage> {
         )
       ),
     );*/
-  }
-  void _navigateToDetailPage() {
-    print('go');
   }
 }

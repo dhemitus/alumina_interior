@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
-import 'package:alumina/shared/shared.dart' as Iconic;
 
 class RegisterProfileForm extends StatefulWidget {
   @override
@@ -42,7 +41,7 @@ class _RegisterProfileFormState extends State<RegisterProfileForm> {
             height: 16.0.w,
           ),
           PrimaryButton(
-            text: 'masuk',
+            text: 'lanjutkan',
           )
         ],
       ),

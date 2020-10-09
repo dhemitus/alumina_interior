@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-
-import 'package:alumina/shared/shared.dart' as Styles;
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Layout2 extends StatelessWidget {
