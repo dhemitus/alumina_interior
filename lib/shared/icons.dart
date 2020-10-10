@@ -5,6 +5,8 @@ import 'package:alumina/shared/shared.dart' as Styles;
 final Widget arrowleft = SvgPicture.asset('assets/svgs/arrow-left-icon.svg', semanticsLabel: 'arrow left', color: Styles.orangeE23C18,);
 final Widget arrowight = SvgPicture.asset('assets/svgs/arrow-right-icon.svg', semanticsLabel: 'arrow right', color: Styles.orangeE23C18);
 final Widget arrowight2D415F = SvgPicture.asset('assets/svgs/arrow-right-icon.svg', semanticsLabel: 'arrow right', color: Styles.blue2D415F);
+final Widget eye = SvgPicture.asset('assets/svgs/eye-icon.svg', semanticsLabel: 'eye', color: Styles.orangeE23C18);
+final Widget eyeFFE9E4 = SvgPicture.asset('assets/svgs/eye-icon.svg', semanticsLabel: 'eye', color: Styles.orangeFFE9E4);
 final Widget eyeoff = SvgPicture.asset('assets/svgs/eye-off-icon.svg', semanticsLabel: 'eye off', color: Styles.orangeE23C18);
 final Widget eyeoffFFE9E4 = SvgPicture.asset('assets/svgs/eye-off-icon.svg', semanticsLabel: 'eye off', color: Styles.orangeFFE9E4);
 final Widget facebook = SvgPicture.asset('assets/svgs/facebook-icon.svg', semanticsLabel: 'facebook', color: Styles.orangeE23C18);
