@@ -22,12 +22,12 @@ class _RegisterPhoneFormState extends State<RegisterPhoneForm> {
         ),
         hint: 'phone number',
         suffix: BaseContainer(
-          width: 100.0.w,
+          width: 82.0.w,
           height: 32.0.w,
           child: CapsuleButton(
             text: 'Kirim',
-            width: 100.0.w,
-            icon: Iconic.arrowight2D415F,
+            width: 82.0.w,
+            icon: Iconic.arrowightFFFFFF,
           ),
         ),
       ),

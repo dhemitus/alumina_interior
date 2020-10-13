@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
@@ -36,11 +37,11 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
-//  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
   final TextEditingController _controllerTopic = TextEditingController();
   String token = '';
   bool isSubscribed = false;
-/*
+
   static Future<dynamic> onBackgroundMessageHandler(Map<String, dynamic> message) {
     debugPrint('onBackgroundMessageHandler');
     if (message.containsKey('data')) {
@@ -127,7 +128,7 @@ class _MyHomePageState extends State<MyHomePage> {
         case 'onLaunch':
           {
             if (page == 'detail_page') {
-              _navigateToDetailPage();
+//              _navigateToDetailPage();
             }
             break;
           }
@@ -139,12 +140,12 @@ class _MyHomePageState extends State<MyHomePage> {
     } catch (error) {
       debugPrint("error: $error");
     }
-  }*/
+  }
 
   @override
   Widget build(BuildContext context) {
     Utils.initScreen(context);
-      return ProfileRegisterPage();
+      return SettingPage();
 /*    return Scaffold(
       key: _scaffoldState,
       body: SafeArea(

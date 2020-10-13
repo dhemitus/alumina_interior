@@ -17,31 +17,31 @@ class _RegisterAddressFormState extends State<RegisterAddressForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           InputText(
-            label: 'alamat',
+            hint: 'alamat',
           ),
           SizedBox(
             height: 16.0.w,
           ),
           InputText(
-            label: 'kota/kabupaten',
+            hint: 'kota/kabupaten',
           ),
           SizedBox(
             height: 16.0.w,
           ),
           InputText(
-            label: 'propinsi',
+            hint: 'propinsi',
           ),
           SizedBox(
             height: 16.0.w,
           ),
           InputText(
-            label: 'kodepos',
+            hint: 'kodepos',
           ),
           SizedBox(
             height: 16.0.w,
           ),
           PrimaryButton(
-            text: 'masuk',
+            text: 'lanjutkan',
           )
         ],
       ),

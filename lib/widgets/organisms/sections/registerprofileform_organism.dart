@@ -17,25 +17,25 @@ class _RegisterProfileFormState extends State<RegisterProfileForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           InputText(
-            label: 'nama depan',
+            hint: 'nama depan',
           ),
           SizedBox(
             height: 16.0.w,
           ),
           InputText(
-            label: 'nama belakang',
+            hint: 'nama belakang',
           ),
           SizedBox(
             height: 16.0.w,
           ),
           InputText(
-            label: 'jenis kelamin',
+            hint: 'jenis kelamin',
           ),
           SizedBox(
             height: 16.0.w,
           ),
           InputText(
-            label: 'tanggal lahir',
+            hint: 'tanggal lahir',
           ),
           SizedBox(
             height: 16.0.w,
