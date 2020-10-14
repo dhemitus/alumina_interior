@@ -29,10 +29,14 @@ class DetailButton extends StatelessWidget {
           Row(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              BaseContainer(
+              SizedBox(
                 width: 64.0.w,
                 height: 64.0.w,
-                image: Utils.imageContainer(head),
+                child: BaseContainer(
+                  width: 64.0.w,
+                  height: 64.0.w,
+                  image: Utils.imageContainer(head),
+                ),
               ),
               SizedBox(
                 width: 6.0.w,
@@ -43,7 +47,7 @@ class DetailButton extends StatelessWidget {
               ClipButton(
                 width: 22.0.w,
                 height: 22.0.w,
-                icon: Iconic.imageDDE9FB,
+                icon: Iconic.image,
               )
             ],
           ),
