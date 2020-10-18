@@ -11,14 +11,14 @@ class LoginOption extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-        SubtitleText2('Pilihan untuk login atau registrasi'),
+        SubtitleText2('Pilihan untuk login atau registrasi', color: Colors.white,),
         SizedBox(height: 16.0.w,),
         BaseContainer(
           padding: EdgeInsets.only(left: 46.0.w),
-          radius: BorderRadius.circular(16.0.w),
+          radius: BorderRadius.circular(32.0.w),
           height: 32.0.h,
           width: 148.0.w,
-          color: Styles.blue0B1A31,
+          color: Styles.blue0B1A31.withOpacity(0.6),
           child: Row(
             children: <Widget>[
               ClipButton(
