@@ -41,9 +41,10 @@ DecorationImage imageContainer(String image) {
   );
 }
 
-DecorationImage imageLocal(String image) {
+DecorationImage imageLocal(String image, ColorFilter filter) {
   return DecorationImage(
-      fit: BoxFit.cover,
-      image: AssetImage(image)
+    fit: BoxFit.cover,
+    image: AssetImage(image),
+    colorFilter: filter
   );
 }

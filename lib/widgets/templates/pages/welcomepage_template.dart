@@ -13,7 +13,7 @@ class WelcomePage extends StatelessWidget {
       back: WelcomeBackground(),
       front:
         BaseContainer(
-          padding: EdgeInsets.only(top: 92.0.h),
+          padding: EdgeInsets.only(top: 142.0.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [

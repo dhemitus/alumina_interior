@@ -15,7 +15,7 @@ class WelcomeBackground extends StatelessWidget {
         BaseContainer(
           width: 1.wp,
           height: 1.hp,
-          image: Utils.imageLocal('assets/images/background1.jpg'),
+          image: Utils.imageLocal('assets/images/background1.jpg', ColorFilter.mode(Styles.blue0B1A31.withOpacity(0.6), BlendMode.color)),
         ),
         BaseContainer(
           width: 1.wp,

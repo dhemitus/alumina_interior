@@ -18,7 +18,7 @@ class LoginOption extends StatelessWidget {
           radius: BorderRadius.circular(32.0.w),
           height: 32.0.h,
           width: 148.0.w,
-          color: Styles.blue0B1A31.withOpacity(0.6),
+          color: Styles.blue0B1A31.withOpacity(0.5),
           child: Row(
             children: <Widget>[
               ClipButton(
