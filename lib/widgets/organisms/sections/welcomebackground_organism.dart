@@ -15,12 +15,12 @@ class WelcomeBackground extends StatelessWidget {
         BaseContainer(
           width: 1.wp,
           height: 1.hp,
-          color: Styles.blue0B1A31.withOpacity(0.5),
+          image: Utils.imageLocal('assets/images/background1.jpg'),
         ),
         BaseContainer(
           width: 1.wp,
           height: 1.hp,
-          image: Utils.imageLocal('assets/images/background1.jpg'),
+          color: Styles.blue0B1A31.withOpacity(0.6),
         ),
       ],
     );

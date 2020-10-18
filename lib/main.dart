@@ -149,10 +149,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Utils.initScreen(context);
-      return Layout3(
-        back: WelcomePage(),
-        front: Container(),
-      );
+      return WelcomePage();
 /*    return Scaffold(
       key: _scaffoldState,
       body: SafeArea(

@@ -10,14 +10,12 @@ class Layout3 extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Stack(
-          children: [
-            back,
-            front
-          ],
-        ),
-      ),
+      body: Stack(
+        children: [
+          back,
+          front
+        ],
+      )
     );
   }
 }

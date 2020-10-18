@@ -12,8 +12,8 @@ class WelcomeHeader extends StatelessWidget {
       children: [
         Iconic.logo,
         SizedBox(height: 112.0.w,),
-        HeadlineText5('Welcome To'),
-        HeadlineText4('Alumina Interior')
+        HeadlineText5('Welcome To', color: Colors.white,),
+        HeadlineText4('Alumina Interior', color: Colors.white,)
       ],
     );
   }
