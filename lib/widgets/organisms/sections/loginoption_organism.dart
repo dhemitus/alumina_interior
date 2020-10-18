@@ -14,7 +14,7 @@ class LoginOption extends StatelessWidget {
         SubtitleText2('Pilihan untuk login atau registrasi', color: Colors.white,),
         SizedBox(height: 16.0.w,),
         BaseContainer(
-          padding: EdgeInsets.only(left: 46.0.w),
+          padding: EdgeInsets.only(left: 38.0.w),
           radius: BorderRadius.circular(32.0.w),
           height: 32.0.h,
           width: 148.0.w,
@@ -23,20 +23,18 @@ class LoginOption extends StatelessWidget {
             children: <Widget>[
               ClipButton(
                 icon: Iconic.mailF1C3B9,
-                width: 32.0.w,
-                height: 32.0.h,
+                width: 36.0.w,
+                height: 36.0.h,
               ),
-              SizedBox(width: 3.0.w,),
               ClipButton(
                 icon: Iconic.googleF1C3B9,
-                width: 32.0.w,
-                height: 32.0.h,
+                width: 36.0.w,
+                height: 36.0.h,
               ),
-              SizedBox(width: 3.0.w,),
               ClipButton(
                 icon: Iconic.facebookF1C3B9,
-                width: 32.0.w,
-                height: 32.0.h,
+                width: 36.0.w,
+                height: 36.0.h,
               )
             ],      ),
         ),

@@ -26,11 +26,11 @@ void initScreen(BuildContext context) {
 
 void initSystem() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-      statusBarColor: Colors.white, // status bar color
+      statusBarColor: Colors.transparent, // status bar color
       statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: Colors.white,
+      systemNavigationBarColor: Colors.transparent,
       systemNavigationBarIconBrightness: Brightness.dark,
-      systemNavigationBarDividerColor: Colors.white
+      systemNavigationBarDividerColor: Colors.transparent
   ));
 }
 
