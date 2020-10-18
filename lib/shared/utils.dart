@@ -40,3 +40,10 @@ DecorationImage imageContainer(String image) {
       image: NetworkImage(image)
   );
 }
+
+DecorationImage imageLocal(String image) {
+  return DecorationImage(
+      fit: BoxFit.cover,
+      image: AssetImage(image)
+  );
+}

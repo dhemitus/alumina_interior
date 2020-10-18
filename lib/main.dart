@@ -5,6 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/shared/shared.dart' as Utils;
 
+import 'widgets/templates/pages/addressregisterpage_template.dart';
+import 'widgets/templates/pages/pages.dart';
+import 'widgets/widgets.dart';
+
 Future<void> main() async {
   Utils.initSystem();
   runApp(MyApp());
@@ -145,7 +149,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Utils.initScreen(context);
-      return SettingPage();
+      return Layout3(
+        back: WelcomePage(),
+        front: Container(),
+      );
 /*    return Scaffold(
       key: _scaffoldState,
       body: SafeArea(
