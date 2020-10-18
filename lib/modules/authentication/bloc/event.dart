@@ -26,10 +26,6 @@ class EmailSignUpAuthentication extends AuthenticationEvent {
   List<AuthUser> get props => [user];
 }
 
-class SignOutAuthentication extends AuthenticationEvent {
-  final bool out;
-  SignOutAuthentication({@required this.out});
+class SignOutAuthentication extends AuthenticationEvent {}
 
-  @override
-  List<bool> get props => [out];
-}
+class IsSignInAuthentication extends AuthenticationEvent {}

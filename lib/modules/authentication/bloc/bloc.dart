@@ -41,5 +41,26 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         yield AuthenticationError('user empty');
       }
     }
+
+    if(event is SignOutAuthentication) {
+      final bool _out = await _repo.signOut();
+
+      if(_out != null) {
+        yield AuthenticationSignOut(_out);
+      } else {
+        yield AuthenticationError('sign out fail');
+      }
+    }
+
+    if(event is IsSignInAuthentication) {
+      final User _user = await _repo.isSignedIn();
+
+      if(_user != null) {
+        yield AuthenticationIsSignIn(_user);
+      } else {
+        yield AuthenticationError('user empty');
+      }
+    }
+
   }
 }

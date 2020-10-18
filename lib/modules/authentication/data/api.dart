@@ -53,19 +53,21 @@ class AuthenticationProvider {
     }
   }
 
-  Future<void> signOut() async {
+  Future<bool> signOut() async {
     bool _google = await _googleSignIn.isSignedIn();
-//    bool _facebook = await _facebookSignIn.isLoggedIn;
-    if(_google) {
-      await _googleSignIn.signOut();
-    }
+    if(_google) await _googleSignIn.signOut();
 
-//    if(_facebook) await _facebookSignIn.logOut();
+    //    bool _facebook = await _facebookSignIn.isLoggedIn;
+    //    if(_facebook) await _facebookSignIn.logOut();
+
     await _auth.signOut();
+    return true;
   }
 
-  Future<void> isSignedIn() async {
-    await FirebaseAuth.instance.signOut();
+  Future<User> isSignedIn() async {
+    User _user = await _auth.currentUser;
+    return _user;
+//    await FirebaseAuth.instance.signOut();
 //    return currentUser != null;
   }
 }

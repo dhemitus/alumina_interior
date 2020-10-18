@@ -9,5 +9,6 @@ class AuthenticationRepository {
   Future<UserCredential> googleSignIn () => _api.googleSignIn();
   Future<UserCredential> emailSignIn (AuthUser user) => _api.emailSignIn(user);
   Future<UserCredential> emailSignUp (AuthUser user) => _api.emailSignUp(user);
-  Future<void> signOut() => _api.signOut();
+  Future<bool> signOut() => _api.signOut();
+  Future<User> isSignedIn() => _api.isSignedIn();
 }

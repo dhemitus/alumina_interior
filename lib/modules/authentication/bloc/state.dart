@@ -48,6 +48,14 @@ class AuthenticationSignOut extends AuthenticationState {
   List<bool> get props => [out];
 }
 
+class AuthenticationIsSignIn extends AuthenticationState {
+  final User user;
+  AuthenticationIsSignIn(this.user);
+
+  @override
+  List<User> get props => [user];
+}
+
 class AuthenticationError extends AuthenticationState {
   final String message;
   AuthenticationError(this.message);
