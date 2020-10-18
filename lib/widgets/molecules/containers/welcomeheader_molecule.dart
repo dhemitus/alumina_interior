@@ -11,10 +11,9 @@ class WelcomeHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.end,
       children: [
-//        Iconic.logo,
         BaseContainer(
-          width: 64.0.h,
-          height: 64.0.h,
+          width: 56.0.h,
+          height: 56.0.h,
           image: Utils.imageLocal('assets/images/logo1.png', null),
         ),
         SizedBox(height: 92.0.w,),
