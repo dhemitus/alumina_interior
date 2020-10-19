@@ -2,19 +2,18 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import 'package:alumina/shared/shared.dart' as Utils;
 import 'package:alumina/modules/modules.dart';
 
 Future<void> main() async {
-  Utils.initSystem();
   Bloc.observer = SimpleBlocObserver();
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
 
   runApp(MultiBlocProvider(
     providers: [
+      BlocProvider<InitBloc>(
+        create: (context) => InitBloc(InitRepository())..add(StartInit()),
+      ),
       BlocProvider<AuthenticationBloc>(
         create: (context) => AuthenticationBloc(AuthenticationRepository()),
       ),
@@ -35,7 +34,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MyHomePage(title: 'Alumina Interior'),
+      home: HomePage(),
     );
   }
 }
@@ -49,9 +48,9 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
+//  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-  final TextEditingController _controllerTopic = TextEditingController();
+//  final TextEditingController _controllerTopic = TextEditingController();
   String token = '';
   bool isSubscribed = false;
 
