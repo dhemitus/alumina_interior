@@ -61,6 +61,5 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
         yield AuthenticationError('user empty');
       }
     }
-
   }
 }

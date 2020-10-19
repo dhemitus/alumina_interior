@@ -2,12 +2,8 @@ import 'dart:io';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 
-import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/shared/shared.dart' as Utils;
-
-import 'widgets/templates/pages/addressregisterpage_template.dart';
-import 'widgets/templates/pages/pages.dart';
-import 'widgets/widgets.dart';
+import 'package:alumina/modules/modules.dart';
 
 Future<void> main() async {
   Utils.initSystem();
@@ -149,7 +145,7 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     Utils.initScreen(context);
-      return WelcomePage();
+      return AuthenticationPage();
 /*    return Scaffold(
       key: _scaffoldState,
       body: SafeArea(

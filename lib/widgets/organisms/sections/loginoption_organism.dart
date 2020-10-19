@@ -6,6 +6,12 @@ import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/shared/shared.dart' as Styles;
 
 class LoginOption extends StatelessWidget {
+  final Function onGoogle;
+  final Function onEmail;
+  final Function onFacebook;
+
+  LoginOption({this.onEmail, this.onGoogle, this.onFacebook});
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -25,16 +31,19 @@ class LoginOption extends StatelessWidget {
                 icon: Iconic.mailF1C3B9,
                 width: 36.0.w,
                 height: 36.0.h,
+                onTap: (context) => onEmail(),
               ),
               ClipButton(
                 icon: Iconic.googleF1C3B9,
                 width: 36.0.w,
                 height: 36.0.h,
+                onTap: (context) => onGoogle(),
               ),
               ClipButton(
                 icon: Iconic.facebookF1C3B9,
                 width: 36.0.w,
                 height: 36.0.h,
+                onTap: (context) => onFacebook(),
               )
             ],      ),
         ),
