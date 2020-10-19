@@ -10,6 +10,7 @@ class AuthenticationProvider {
   Future<UserCredential> googleSignIn () async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
     final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    print(googleAuth);
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
       idToken: googleAuth.idToken,
