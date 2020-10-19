@@ -11,6 +11,9 @@ Future<void> main() async {
 
   runApp(MultiBlocProvider(
     providers: [
+      BlocProvider<MessageBloc>(
+        create: (context) => MessageBloc(MessageRepository())..add(StartMessage()),
+      ),
       BlocProvider<InitBloc>(
         create: (context) => InitBloc(InitRepository())..add(StartInit()),
       ),
@@ -23,7 +26,7 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -34,141 +37,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: HomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-//  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
-//  final TextEditingController _controllerTopic = TextEditingController();
-  String token = '';
-  bool isSubscribed = false;
-
-  static Future<dynamic> onBackgroundMessageHandler(Map<String, dynamic> message) {
-    debugPrint('onBackgroundMessageHandler');
-    if (message.containsKey('data')) {
-      final dynamic data = message['data'];
-      String name = data['name'];
-      String age = data['age'];
-      String page = data['page'];
-      debugPrint('name: $name & age: $age & page: $page');
-    }
-
-    /*if (message.containsKey('notification')) {
-    // Handle notification message
-    final dynamic notification = message['notification'];
-  }*/
-
-    // Or do other work.
-    return Future.value(true);
-  }
-
-  @override
-  void initState() {
-    _firebaseMessaging.configure(
-      onMessage: (Map<String, dynamic> message) async {
-        debugPrint('onMessage');
-        _getDataFcm(message, 'onMessage');
-      },
-      onBackgroundMessage: onBackgroundMessageHandler,
-      onResume: (Map<String, dynamic> message) async {
-        debugPrint('onResume');
-        _getDataFcm(message, 'onResume');
-      },
-      onLaunch: (Map<String, dynamic> message) async {
-        debugPrint('onLaunch');
-        _getDataFcm(message, 'onLaunch');
-      },
-    );
-
-    _firebaseMessaging.requestNotificationPermissions(
-        const IosNotificationSettings(
-            sound: true, badge: true, alert: true, provisional: true));
-    _firebaseMessaging.onIosSettingsRegistered
-        .listen((IosNotificationSettings settings) {
-      debugPrint("Settings registered: $settings");
-    });
-    _firebaseMessaging.getToken().then((String token) {
-      debugPrint('getToken: $token');
-      setState(() {
-        this.token = token;
-      });
-    });
-    super.initState();
-  }
-
-  void _getDataFcm(Map<String, dynamic> message, String type) {
-    try {
-      /*debugPrint('message.length: ${message.keys.length}');
-      debugPrint('message: $message');
-      var aps = message['aps'];
-      var name = message['name'];
-      var age = message['age'];
-      debugPrint('name: $name & age: $age');*/
-
-      /*var data = message['data'];
-      debugPrint('data: $data');
-      String name = data['name'];
-      String age = data['age'];
-      String page = data['page'];
-      debugPrint('name: $name & age: $age & page: $page');*/
-      String page = '';
-      String name = '';
-      String age = '';
-      if (Platform.isIOS) {
-        name = message['name'];
-        age = message['age'];
-        page = message['page'];
-      } else if (Platform.isAndroid) {
-        var data = message['data'];
-        name = data['name'];
-        age = data['age'];
-        page = data['page'];
-      }
-      debugPrint('name: $name & age: $age & page: $page');
-      switch (type) {
-        case 'onResume':
-        case 'onLaunch':
-          {
-            if (page == 'detail_page') {
-//              _navigateToDetailPage();
-            }
-            break;
-          }
-        default:
-          {
-            debugPrint('unknown type in getDataFcm');
-          }
-      }
-    } catch (error) {
-      debugPrint("error: $error");
-    }
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    Utils.initScreen(context);
-      return AuthenticationPage();
-/*    return Scaffold(
-      key: _scaffoldState,
-      body: SafeArea(
-        child: Column(
-          children: [
-            RegisterProfileForm()
-          ],
-        )
+      home: BlocBuilder<MessageBloc, MessageState>(
+        builder: (BuildContext context, MessageState state) {
+          return HomePage();
+        }
       ),
-    );*/
+    );
   }
 }
 

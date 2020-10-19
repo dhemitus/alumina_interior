@@ -2,7 +2,6 @@ part of 'bloc.dart';
 
 
 abstract class AuthenticationEvent extends Equatable {
-  AuthenticationEvent();
 
   @override
   List<Object> get props => [];
