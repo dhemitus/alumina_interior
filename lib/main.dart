@@ -78,6 +78,7 @@ class _MyHomePageState extends State<MyHomePage> {
         _getDataFcm(message, 'onLaunch');
       },
     );
+
     _firebaseMessaging.requestNotificationPermissions(
         const IosNotificationSettings(
             sound: true, badge: true, alert: true, provisional: true));
