@@ -14,7 +14,7 @@ class HomePage extends StatelessWidget {
         if (state is InitLoading) {
           return LoadPage();
         } else if (state is InitLoaded) {
-          return AuthenticationPage();
+          return CheckingPage();
         } else if (state is InitError) {
           return ErrorPage();
         } else {

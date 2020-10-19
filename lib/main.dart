@@ -15,7 +15,7 @@ Future<void> main() async {
         create: (context) => InitBloc(InitRepository())..add(StartInit()),
       ),
       BlocProvider<AuthenticationBloc>(
-        create: (context) => AuthenticationBloc(AuthenticationRepository()),
+        create: (context) => AuthenticationBloc(AuthenticationRepository())..add(IsSignInAuthentication()),
       ),
     ],
     child: MyApp(),
