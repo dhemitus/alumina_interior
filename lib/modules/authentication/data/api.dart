@@ -17,7 +17,6 @@ class AuthenticationProvider {
     );
     final UserCredential _rest = await _auth.signInWithCredential(credential);
     return _rest;
-
   }
 
   Future<UserCredential> emailSignIn (AuthUser user) async {
