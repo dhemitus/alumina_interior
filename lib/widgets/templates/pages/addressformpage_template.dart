@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 
-class AddressRegisterPage extends StatelessWidget {
+class AddressFormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Layout1(

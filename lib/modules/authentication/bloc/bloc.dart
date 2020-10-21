@@ -12,8 +12,9 @@ part 'state.dart';
 
 class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> {
   final AuthenticationRepository _repo;
+  final RegisterBloc _reg;
 
-  AuthenticationBloc(this._repo) : super(null);
+  AuthenticationBloc(this._repo, this._reg) : super(null);
 
   @override
   AuthenticationState get initialState => AuthenticationInit();
@@ -26,6 +27,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       final UserCredential _user = await _repo.googleSignIn();
 
       if(_user != null) {
+        _reg.add(CheckRegister(user: _user));
+
         yield AuthenticationSignIn(_user);
       } else {
         yield AuthenticationError('user empty');

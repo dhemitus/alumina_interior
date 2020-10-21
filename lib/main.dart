@@ -8,6 +8,9 @@ Future<void> main() async {
 
   runApp(MultiBlocProvider(
     providers: [
+      BlocProvider<RegisterBloc>(
+        create: (context) => RegisterBloc(RegisterRepository()),
+      ),
       BlocProvider<MessageBloc>(
         create: (context) => MessageBloc(MessageRepository())..add(StartMessage()),
       ),
@@ -15,7 +18,7 @@ Future<void> main() async {
         create: (context) => InitBloc(InitRepository())..add(StartInit()),
       ),
       BlocProvider<AuthenticationBloc>(
-        create: (context) => AuthenticationBloc(AuthenticationRepository())..add(IsSignInAuthentication()),
+        create: (context) => AuthenticationBloc(AuthenticationRepository(), BlocProvider.of<RegisterBloc>(context))..add(IsSignInAuthentication()),
       ),
     ],
     child: MyApp(),
