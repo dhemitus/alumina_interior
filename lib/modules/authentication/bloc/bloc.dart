@@ -27,7 +27,7 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       final UserCredential _user = await _repo.googleSignIn();
 
       if(_user != null) {
-        _reg.add(CheckRegister(user: _user));
+        _reg.add(CheckRegister(user: _user.user));
 
         yield AuthenticationSignIn(_user);
       } else {
@@ -59,6 +59,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       final User _user = await _repo.isSignedIn();
 
       if(_user != null) {
+        _reg.add(CheckRegister(user: _user));
+
         yield AuthenticationIsSignIn(_user);
       } else {
         yield AuthenticationError('user empty');

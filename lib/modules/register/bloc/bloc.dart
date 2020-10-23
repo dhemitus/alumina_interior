@@ -21,7 +21,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
     try {
       if(event is CheckRegister) {
-        bool _reg = await _repo.isRegistered();
+        bool _reg = await _repo.isRegistered(event.user);
         yield RegisterCheck(_reg);
       }
 

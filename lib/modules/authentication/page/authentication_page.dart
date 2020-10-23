@@ -22,6 +22,16 @@ class AuthenticationPage extends StatelessWidget {
       BlocProvider.of<AuthenticationBloc>(context).add(GoogleAuthentication());
     }
 
-    return WelcomePage(onEmail: onEmail, onGoogle: onGoogle, onFacebook: onFacebook,);
+    return BlocBuilder<AuthenticationBloc, AuthenticationState>(
+        builder: (BuildContext context, AuthenticationState state) {
+          if (state is AuthenticationIsSignIn) {
+            print(state.user);
+            return RegisterProfile();
+            //frontpage
+          } else {
+            return WelcomePage(onEmail: onEmail, onGoogle: onGoogle, onFacebook: onFacebook,);
+          }
+        }
+    );
   }
 }

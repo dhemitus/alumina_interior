@@ -7,10 +7,10 @@ abstract class RegisterEvent extends Equatable {
 }
 
 class CheckRegister extends RegisterEvent {
-  final UserCredential user;
+  final User user;
   CheckRegister({this.user});
 
   @override
-  List<UserCredential> get props => [user];
+  List<User> get props => [user];
 
 }
