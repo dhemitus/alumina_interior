@@ -20,7 +20,8 @@ class CheckingPage extends StatelessWidget {
             return AuthenticationPage();
           }
         } else {
-          return AuthenticationPage();
+          print(state);
+          return LoadPage();
         }
       }
     );

@@ -9,7 +9,7 @@ Future<void> main() async {
   runApp(MultiBlocProvider(
     providers: [
       BlocProvider<RegisterBloc>(
-        create: (context) => RegisterBloc(RegisterRepository()),
+        create: (context) => RegisterBloc(RegisterRepository())..add(IsRegisterd()),
       ),
       BlocProvider<MessageBloc>(
         create: (context) => MessageBloc(MessageRepository())..add(StartMessage()),

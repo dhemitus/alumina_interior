@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
 import 'package:alumina/models/models.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class AuthenticationProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
@@ -69,5 +70,15 @@ class AuthenticationProvider {
     return _user;
 //    await FirebaseAuth.instance.signOut();
 //    return currentUser != null;
+  }
+
+  Future<bool> setFirstSign(bool value) async {
+    SharedPreferences _storage = await SharedPreferences.getInstance();
+    return _storage.setBool('firstsign', value);
+  }
+
+  Future<bool> getFirstSign() async {
+    SharedPreferences _storage = await SharedPreferences.getInstance();
+    return _storage.getBool('firstsign') ?? false;
   }
 }

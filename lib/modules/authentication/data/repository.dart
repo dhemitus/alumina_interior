@@ -11,4 +11,6 @@ class AuthenticationRepository {
   Future<UserCredential> emailSignUp (AuthUser user) => _api.emailSignUp(user);
   Future<bool> signOut() => _api.signOut();
   Future<User> isSignedIn() => _api.isSignedIn();
+  Future<bool> setFirstSign(bool value) => _api.setFirstSign(value);
+  Future<bool> getFirstSign() => _api.getFirstSign();
 }

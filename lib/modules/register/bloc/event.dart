@@ -6,6 +6,8 @@ abstract class RegisterEvent extends Equatable {
   List<Object> get props => [];
 }
 
+class IsRegisterd extends RegisterEvent {}
+
 class CheckRegister extends RegisterEvent {
   final User user;
   CheckRegister({this.user});

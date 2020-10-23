@@ -6,17 +6,17 @@ import 'package:alumina/modules/modules.dart';
 
 class AuthenticationPage extends StatelessWidget {
 
-  onEmail() {
-    print('email');
-  }
-
-
-  onFacebook() {
-    print('facebook');
-  }
-
   @override
   Widget build(BuildContext context) {
+
+    onEmail() {
+      print('email');
+    }
+
+    onFacebook() {
+      print('facebook');
+    }
+
     onGoogle() {
       print('google');
       BlocProvider.of<AuthenticationBloc>(context).add(GoogleAuthentication());
@@ -26,6 +26,9 @@ class AuthenticationPage extends StatelessWidget {
         builder: (BuildContext context, AuthenticationState state) {
           if (state is AuthenticationIsSignIn) {
             print(state.user);
+            return RegisterProfile();
+            //frontpage
+          } else if(state is AuthenticationSignIn) {
             return RegisterProfile();
             //frontpage
           } else {
