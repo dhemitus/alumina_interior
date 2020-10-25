@@ -5,4 +5,5 @@ class RegisterRepository {
   final RegisterProvider _api = RegisterProvider();
 
   Future<bool> isRegistered({User user}) => _api.isRegistered(user: user);
+  Future<bool> addRegister(User user) => _api.addRegister(user);
 }

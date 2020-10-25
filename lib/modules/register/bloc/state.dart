@@ -21,6 +21,14 @@ class RegisterCheck extends RegisterState {
   List<bool>  get props => [registered];
 }
 
+class RegisterAdded extends RegisterState {
+  final bool registered;
+  RegisterAdded(this.registered);
+
+  @override
+  List<bool>  get props => [registered];
+}
+
 class RegisterError extends RegisterState {
   final String message;
   RegisterError(this.message);

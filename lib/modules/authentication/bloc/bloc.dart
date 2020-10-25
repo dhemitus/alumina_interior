@@ -27,7 +27,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       final UserCredential _user = await _repo.googleSignIn();
 
       if(_user != null) {
-//        _reg.add(CheckRegister(user: _user.user));
+
+        _reg.add(AddRegister(_user.user));
 
         final bool _sign = await _repo.getFirstSign();
         if(_sign == false) {
@@ -45,6 +46,8 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       final UserCredential _user = await _repo.emailSignIn(event.user);
 
       if(_user != null) {
+        _reg.add(AddRegister(_user.user));
+
         final bool _sign = await _repo.getFirstSign();
         if(_sign == false) {
           await _repo.setFirstSign(true);

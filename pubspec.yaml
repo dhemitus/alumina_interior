@@ -30,6 +30,7 @@ dependencies:
   firebase_auth:
   firebase_core:
   firebase_messaging:
+  cloud_firestore:
   google_sign_in:
   bloc:
   flutter_bloc:
