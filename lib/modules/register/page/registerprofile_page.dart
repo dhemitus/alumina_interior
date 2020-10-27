@@ -12,6 +12,7 @@ class RegisterProfilePage extends StatefulWidget {
 
 class _RegisterProfilePageState extends State<RegisterProfilePage> {
   File _picture;
+  PickedFile _file;
   ImagePicker _picker = ImagePicker();
   List _listGender = ["Laki-laki", "Perempuan"];
   String _valGender, _date, _firstName, _lastName;
@@ -20,7 +21,7 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
   TextEditingController _lastnameController = new TextEditingController();
 
   _getImage() async {
-    final _file = await _picker.getImage(source: ImageSource.gallery);
+    _file = await _picker.getImage(source: ImageSource.gallery);
     setState(() {
       _file != null ? _picture = File(_file.path) : print('no pic');
       print(_file.path);
@@ -62,6 +63,7 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
   Widget build(BuildContext context) {
     return ProfileFormPage(
       getPhoto: (context) => _getImage(),
+      picture: _file != null ? _file.path : null,
       gender: _valGender,
       genders: _listGender,
       onGender: (val) => {

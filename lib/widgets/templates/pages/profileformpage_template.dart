@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
@@ -10,8 +11,9 @@ class ProfileFormPage extends StatelessWidget {
   final Function onGender, onDate, onSubmit;
   final String date;
   final TextEditingController firstnameController, lastnameController;
+  final String picture;
 
-  ProfileFormPage({this.getPhoto, this.genders, this.gender, this.onGender, this.onDate, this.date, this.onSubmit, this.firstnameController, this.lastnameController});
+  ProfileFormPage({this.getPhoto, this.picture, this.genders, this.gender, this.onGender, this.onDate, this.date, this.onSubmit, this.firstnameController, this.lastnameController});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class ProfileFormPage extends StatelessWidget {
       middle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RegisterPhotoForm(onTap: getPhoto,),
+          RegisterPhotoForm(onTap: getPhoto, picture: picture,),
           SizedBox(height: 56.0.h,),
           ContentHeader(
             head: 'isilah dengan data yang benar dan akurat ',
