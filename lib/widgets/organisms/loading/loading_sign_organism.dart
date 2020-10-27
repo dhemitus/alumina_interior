@@ -5,8 +5,9 @@ import 'package:alumina/shared/shared.dart' as Styles;
 
 class LoadingSign extends StatelessWidget {
   final String title;
+  final Color color;
 
-  LoadingSign({this.title});
+  LoadingSign({this.title, this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,7 @@ class LoadingSign extends StatelessWidget {
           ),
           Padding(
             padding: EdgeInsets.only(top:18.0),
-            child: HeadlineText6(title, color: Styles.blue0B1A31,),
+            child: HeadlineText6(title, color: color != null ? color : Styles.blue0B1A31,),
           ),
         ],
       ),

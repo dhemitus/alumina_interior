@@ -46,9 +46,9 @@ class MessageProvider {
       debugPrint("Settings registered: $settings");
     });
     _firebaseMessaging.getToken().then((String token) async {
-      debugPrint('getToken: $token');
       SharedPreferences _storage = await SharedPreferences.getInstance();
       _storage.setString('token', token);
+      debugPrint('getToken: $token');
     });
   }
 }

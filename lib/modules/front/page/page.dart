@@ -1,0 +1,1 @@
+export './front_page.dart';

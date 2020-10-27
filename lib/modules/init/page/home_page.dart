@@ -12,9 +12,10 @@ class HomePage extends StatelessWidget {
     return BlocBuilder<InitBloc, InitState>(
       builder: (BuildContext context, InitState state) {
         if (state is InitLoading) {
-          return LoadPage();
+          return LoadPage(title: 'load from homepage...',);
         } else if (state is InitLoaded) {
-          return CheckingPage();
+//          return CheckingPage();
+          return AuthenticationPage();
         } else if (state is InitError) {
           return ErrorPage();
         } else {

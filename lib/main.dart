@@ -8,14 +8,14 @@ Future<void> main() async {
 
   runApp(MultiBlocProvider(
     providers: [
-      BlocProvider<RegisterBloc>(
-        create: (context) => RegisterBloc(RegisterRepository())..add(IsRegisterd()),
+      BlocProvider<InitBloc>(
+        create: (context) => InitBloc(InitRepository())..add(StartInit()),
       ),
       BlocProvider<MessageBloc>(
         create: (context) => MessageBloc(MessageRepository())..add(StartMessage()),
       ),
-      BlocProvider<InitBloc>(
-        create: (context) => InitBloc(InitRepository())..add(StartInit()),
+      BlocProvider<RegisterBloc>(
+        create: (context) => RegisterBloc(RegisterRepository())..add(IsRegisterd()),
       ),
       BlocProvider<AuthenticationBloc>(
         create: (context) => AuthenticationBloc(AuthenticationRepository(), BlocProvider.of<RegisterBloc>(context))..add(IsSignInAuthentication()),

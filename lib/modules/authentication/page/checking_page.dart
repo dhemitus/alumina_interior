@@ -13,15 +13,18 @@ class CheckingPage extends StatelessWidget {
       builder: (BuildContext context, RegisterState state) {
         if(state is RegisterCheck) {
           if(state.registered) {
-            return LoadPage();
+//            return LoadPage(title: 'register ${state.registered}',);
+            return FrontPage();
             print(state.registered);
+            //front
           } else {
             print(state.registered);
-            return AuthenticationPage();
+            return RegisterProfilePage();
+//            return AuthenticationPage();
           }
         } else {
-          print(state);
-          return LoadPage();
+          return RegisterProfilePage();
+//          return AuthenticationPage();
         }
       }
     );
