@@ -9,8 +9,9 @@ class InputOption extends StatelessWidget {
   final dynamic value;
   final List<dynamic> values;
   final Function onChange;
+  final String hint;
 
-  InputOption({@required this.values, this.mode = Styles.StyleType.primary, this.value = null, this.onChange});
+  InputOption({@required this.values, this.hint = '', this.mode = Styles.StyleType.primary, this.value = null, this.onChange});
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +38,7 @@ class InputOption extends StatelessWidget {
       ),
       child: DropdownButtonHideUnderline(
           child: DropdownButton(
-            hint: BodyText2("Select The Gender", color: border,),
+            hint: BodyText2(hint, color: Styles.blueAEC0DB,),
             value: value,
             items: values.map((value) {
               return DropdownMenuItem(

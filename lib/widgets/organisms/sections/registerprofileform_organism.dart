@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 
-class RegisterProfileForm extends StatefulWidget {
-  @override
-  _RegisterProfileFormState createState() => _RegisterProfileFormState();
-}
+class RegisterProfileForm extends StatelessWidget {
+  final List<dynamic> genders;
+  final dynamic gender;
+  final Function onGender, onDate, onSubmit;
+  final String date;
+  final TextEditingController firstnameController, lastnameController;
 
-class _RegisterProfileFormState extends State<RegisterProfileForm> {
-  List _listGender = ["Male", "Female"];
-  String _valGender;
+  RegisterProfileForm({this.genders, this.gender, this.onGender, this.onDate, this.date, this.onSubmit, this.firstnameController, this.lastnameController});
 
   @override
   Widget build(BuildContext context) {
@@ -21,28 +21,37 @@ class _RegisterProfileFormState extends State<RegisterProfileForm> {
         children: <Widget>[
           InputText(
             hint: 'nama depan',
+            controller: firstnameController,
           ),
           SizedBox(
             height: 16.0.w,
           ),
           InputText(
             hint: 'nama belakang',
+            controller: lastnameController,
           ),
           SizedBox(
             height: 16.0.w,
           ),
-          InputOption(values: _listGender),
+          InputOption(
+            hint: "jenis kelamin",
+            values: genders,
+            value: gender,
+            onChange: onGender,
+          ),
           SizedBox(
             height: 16.0.w,
           ),
-          InputText(
-            hint: 'tanggal lahir',
+          SecondaryButton(
+            text: date != null ? date : 'tanggal lahir',
+            onTap: onDate,
           ),
           SizedBox(
             height: 16.0.w,
           ),
           PrimaryButton(
             text: 'lanjutkan',
+            onTap: onSubmit,
           )
         ],
       ),
