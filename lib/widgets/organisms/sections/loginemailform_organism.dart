@@ -11,43 +11,46 @@ class LoginEmailForm extends StatefulWidget {
 }
 
 class _LoginEmailFormState extends State<LoginEmailForm> {
+
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(bottom: 32.0.w),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          InputText(
-            mode: Styles.StyleType.warning,
-            hint: 'e-mail',
-            suffix: BaseContainer(
+      child: Form(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            InputText(
+              mode: Styles.StyleType.warning,
+              hint: 'e-mail',
+              suffix: BaseContainer(
+                  width: 8.0.w,
+                  height: 8.0.w,
+                  child: Iconic.mailFFE9E4
+              ),
+            ),
+            SizedBox(
+              height: 16.0.w,
+            ),
+            InputText(
+              mode: Styles.StyleType.warning,
+              hint: 'password',
+              password: true,
+              suffix: ClipButton(
                 width: 8.0.w,
                 height: 8.0.w,
-                child: Iconic.mailFFE9E4
+                icon: Iconic.eyeoffFFE9E4,
+              ),
             ),
-          ),
-          SizedBox(
-            height: 16.0.w,
-          ),
-          InputText(
-            mode: Styles.StyleType.warning,
-            hint: 'password',
-            password: true,
-            suffix: ClipButton(
-              width: 8.0.w,
-              height: 8.0.w,
-              icon: Iconic.eyeoffFFE9E4,
+            SizedBox(
+              height: 16.0.w,
             ),
-          ),
-          SizedBox(
-            height: 16.0.w,
-          ),
-          PrimaryButton(
-            mode: Styles.StyleType.warning,
-            text: 'masuk',
-          )
-        ],
+            PrimaryButton(
+              mode: Styles.StyleType.warning,
+              text: 'masuk',
+            )
+          ],
+        ),
       ),
     );
   }

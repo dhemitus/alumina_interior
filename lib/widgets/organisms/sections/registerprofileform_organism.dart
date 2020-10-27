@@ -9,6 +9,9 @@ class RegisterProfileForm extends StatefulWidget {
 }
 
 class _RegisterProfileFormState extends State<RegisterProfileForm> {
+  List _listGender = ["Male", "Female"];
+  String _valGender;
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -28,9 +31,7 @@ class _RegisterProfileFormState extends State<RegisterProfileForm> {
           SizedBox(
             height: 16.0.w,
           ),
-          InputText(
-            hint: 'jenis kelamin',
-          ),
+          InputOption(values: _listGender),
           SizedBox(
             height: 16.0.w,
           ),

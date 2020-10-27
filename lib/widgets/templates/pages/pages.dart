@@ -1,4 +1,4 @@
-export './loginpage_template.dart';
+export './loginformpage_template.dart';
 export './settingpage_template.dart';
 export './profileformpage_template.dart';
 export './addressformpage_template.dart';

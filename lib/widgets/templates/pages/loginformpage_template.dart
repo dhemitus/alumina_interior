@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 
-class LoginPage extends StatelessWidget {
+class LoginFormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Layout1(

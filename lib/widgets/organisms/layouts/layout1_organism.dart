@@ -6,14 +6,12 @@ class Layout1 extends StatelessWidget {
   final Widget top;
   final Widget middle;
   final Widget bottom;
-  final GlobalKey<ScaffoldState> _scaffoldState = GlobalKey<ScaffoldState>();
 
   Layout1({this.left, this.top, this.middle, this.bottom});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      key: _scaffoldState,
       backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Row(
