@@ -1,9 +1,14 @@
 import 'dart:io';
+import 'package:alumina/modules/modules.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
+import 'package:date_format/date_format.dart';
+import 'package:path/path.dart';
 
 import 'package:alumina/widgets/widgets.dart';
+import 'package:alumina/models/models.dart';
 
 class RegisterProfilePage extends StatefulWidget {
   @override
@@ -12,6 +17,7 @@ class RegisterProfilePage extends StatefulWidget {
 
 class _RegisterProfilePageState extends State<RegisterProfilePage> {
   File _picture;
+  String _picture_name;
   PickedFile _file;
   ImagePicker _picker = ImagePicker();
   List _listGender = ["Laki-laki", "Perempuan"];
@@ -24,21 +30,20 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
     _file = await _picker.getImage(source: ImageSource.gallery);
     setState(() {
       _file != null ? _picture = File(_file.path) : print('no pic');
-      print(_file.path);
+      _picture_name = basename(_file.path);
+      print(_picture_name);
     });
   }
 
   _printFirstname() {
     setState(() {
       _firstName = _firstnameController.text;
-      print(_firstName);
     });
   }
 
   _printLastName() {
     setState(() {
       _lastName = _lastnameController.text;
-      print(_lastName);
     });
   }
 
@@ -77,16 +82,23 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
         }, onConfirm: (date) {
           print('confirm $date');
           setState(() {
-            _date = date.toString();
+            _date = formatDate(date, [yyyy, '-', mm, '-', dd]);
           });
-        }, currentTime: DateTime.now())
+         }, currentTime: DateTime.now())
       },
       date: _date,
       firstnameController: _firstnameController,
       lastnameController: _lastnameController,
       onSubmit: (context) {
-        print(_firstName);
-        print(_lastName);
+        final UserData _user = UserData(
+          first_name: _firstName,
+          last_name: _lastName,
+          picture: _picture,
+          picture_name: _picture_name,
+          birth_date: _date,
+          gender: _valGender
+        );
+        BlocProvider.of<RegisterBloc>(context).add(SetRegister(_user));
       },
     );
   }

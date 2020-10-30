@@ -16,3 +16,12 @@ class AddRegister extends RegisterEvent {
   List<User> get props => [user];
 
 }
+
+class SetRegister extends RegisterEvent {
+  final UserData user;
+  SetRegister(this.user);
+
+  @override
+  List<UserData> get props => [user];
+
+}
