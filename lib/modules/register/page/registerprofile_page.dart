@@ -16,24 +16,12 @@ class RegisterProfilePage extends StatefulWidget {
 }
 
 class _RegisterProfilePageState extends State<RegisterProfilePage> {
-  File _picture;
-  String _picture_name;
-  PickedFile _file;
   ImagePicker _picker = ImagePicker();
-  List _listGender = ["Laki-laki", "Perempuan"];
-  String _valGender, _date, _firstName, _lastName;
+  List<String> _listGender = gender;
+  String _valGender, _date, _firstName, _lastName, _picture_path;
 
   TextEditingController _firstnameController = new TextEditingController();
   TextEditingController _lastnameController = new TextEditingController();
-
-  _getImage() async {
-    _file = await _picker.getImage(source: ImageSource.gallery);
-    setState(() {
-      _file != null ? _picture = File(_file.path) : print('no pic');
-      _picture_name = basename(_file.path);
-      print(_picture_name);
-    });
-  }
 
   _printFirstname() {
     setState(() {
@@ -64,42 +52,75 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
     super.dispose();
   }
 
+  void onGender(String val) {
+    setState(() {
+      _valGender = val;
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return ProfileFormPage(
-      getPhoto: (context) => _getImage(),
-      picture: _file != null ? _file.path : null,
-      gender: _valGender,
-      genders: _listGender,
-      onGender: (val) => {
-        setState(() {
-          _valGender = val;
-        })
-      },
-      onDate: (context) =>{
-        DatePicker.showDatePicker(context, showTitleActions: true, onChanged: (date) {
-          print('change $date in time zone ' + date.timeZoneOffset.inHours.toString());
-        }, onConfirm: (date) {
-          print('confirm $date');
-          setState(() {
-            _date = formatDate(date, [yyyy, '-', mm, '-', dd]);
-          });
-         }, currentTime: DateTime.now())
-      },
-      date: _date,
-      firstnameController: _firstnameController,
-      lastnameController: _lastnameController,
-      onSubmit: (context) {
-        final UserData _user = UserData(
-          first_name: _firstName,
-          last_name: _lastName,
+
+    void onImage() async {
+      File _picture;
+
+      PickedFile _file = await _picker.getImage(source: ImageSource.gallery);
+      _file != null ? _picture = File(_file.path) : print('no pic');
+      final String _picture_name = basename(_file.path);
+      setState(() {
+        _picture_path = _file.path;
+      });
+      final UserData _user = UserData(
           picture: _picture,
           picture_name: _picture_name,
+      );
+      BlocProvider.of<RegisterBloc>(context).add(SetPicture(_user));
+    }
+
+    void onSubmit() {
+      final UserData _user = UserData(
+          first_name: _firstName,
+          last_name: _lastName,
           birth_date: _date,
           gender: _valGender
+      );
+      BlocProvider.of<RegisterBloc>(context).add(SetProfile(_user));
+    }
+
+    void onDate() {
+      DatePicker.showDatePicker(context, showTitleActions: true, onChanged: (date) {
+        print('change $date in time zone ' + date.timeZoneOffset.inHours.toString());
+      }, onConfirm: (date) {
+        print('confirm $date');
+        setState(() {
+          _date = formatDate(date, [yyyy, '-', mm, '-', dd]);
+        });
+      }, currentTime: DateTime.now());
+    }
+
+    return BlocBuilder<RegisterBloc, RegisterState>(
+      builder: (BuildContext context, RegisterState state){
+        if(state is RegisterProfileSet) {
+          if(state.registered) {
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              Navigator.of(context).pushReplacementNamed('/registerAddress');
+            });
+          }
+        }
+
+        return ProfileFormPage(
+          getPhoto: (context) => onImage(),
+          picture: _picture_path,
+          gender: _valGender,
+          genders: _listGender,
+          onGender: (val) => onGender(val),
+          onDate: (context) => onDate(),
+          date: _date,
+          firstnameController: _firstnameController,
+          lastnameController: _lastnameController,
+          onSubmit: (context) => onSubmit(),
         );
-        BlocProvider.of<RegisterBloc>(context).add(SetRegister(_user));
       },
     );
+
   }
 }

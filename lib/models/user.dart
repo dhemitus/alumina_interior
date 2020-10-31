@@ -17,8 +17,12 @@ class UserData extends Object {
   final String uid;
   final String picture_name;
   final File picture;
+  final String address;
+  final String city;
+  final String province;
+  final String postcode;
   final String createAt;
   final String updateAt;
 
-  UserData({this.first_name, this.last_name, this.gender, this.birth_date, this.token, this.uid, this.picture, this.picture_name, this.createAt, this.updateAt});
+  UserData({this.first_name, this.last_name, this.gender, this.birth_date, this.token, this.uid, this.picture, this.picture_name, this.address, this.city, this.province, this.postcode, this.createAt, this.updateAt});
 }

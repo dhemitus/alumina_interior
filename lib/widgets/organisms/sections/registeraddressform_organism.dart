@@ -3,12 +3,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 
-class RegisterAddressForm extends StatefulWidget {
-  @override
-  _RegisterAddressFormState createState() => _RegisterAddressFormState();
-}
+class RegisterAddressForm extends StatelessWidget {
+  final TextEditingController addressController, cityController, provinceController, postcodeController;
+  final Function onSubmit;
 
-class _RegisterAddressFormState extends State<RegisterAddressForm> {
+  RegisterAddressForm({this.addressController, this.cityController, this.provinceController, this.postcodeController, this.onSubmit});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -18,30 +18,35 @@ class _RegisterAddressFormState extends State<RegisterAddressForm> {
         children: <Widget>[
           InputText(
             hint: 'alamat',
+            controller: addressController,
           ),
           SizedBox(
             height: 16.0.w,
           ),
           InputText(
             hint: 'kota/kabupaten',
+            controller: cityController,
           ),
           SizedBox(
             height: 16.0.w,
           ),
           InputText(
             hint: 'propinsi',
+            controller: provinceController,
           ),
           SizedBox(
             height: 16.0.w,
           ),
           InputText(
             hint: 'kodepos',
+            controller: postcodeController,
           ),
           SizedBox(
             height: 16.0.w,
           ),
           PrimaryButton(
             text: 'lanjutkan',
+            onTap: onSubmit,
           )
         ],
       ),

@@ -35,6 +35,26 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         yield RegisterSeted(_reg);
       }
 
+      if(event is SetPicture) {
+        print('register seted');
+        bool _reg = await _repo.setPicture(event.user);
+        print(_reg);
+        yield RegisterPictureSet(_reg);
+      }
+
+      if(event is SetProfile) {
+        print('register seted');
+        bool _reg = await _repo.setProfile(event.user);
+        print(_reg);
+        yield RegisterProfileSet(_reg);
+      }
+
+      if(event is SetAddress) {
+        print('register seted');
+        bool _reg = await _repo.setAddress(event.user);
+        print(_reg);
+        yield RegisterAddressSet(_reg);
+      }
 
       if(event is IsRegisterd) {
         bool _reg = await _repo.isRegistered();

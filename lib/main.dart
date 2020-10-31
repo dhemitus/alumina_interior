@@ -33,8 +33,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Alumina Interior',
       debugShowCheckedModeBanner: false,
+      routes: <String, WidgetBuilder>{
+        '/registerAddress': (BuildContext context) => RegisterAddressPage()
+      },
       theme: ThemeData(
-
         primarySwatch: Colors.blue,
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),

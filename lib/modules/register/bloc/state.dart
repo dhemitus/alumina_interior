@@ -37,6 +37,30 @@ class RegisterSeted extends RegisterState {
   List<bool>  get props => [registered];
 }
 
+class RegisterPictureSet extends RegisterState {
+  final bool registered;
+  RegisterPictureSet(this.registered);
+
+  @override
+  List<bool>  get props => [registered];
+}
+
+class RegisterProfileSet extends RegisterState {
+  final bool registered;
+  RegisterProfileSet(this.registered);
+
+  @override
+  List<bool>  get props => [registered];
+}
+
+class RegisterAddressSet extends RegisterState {
+  final bool registered;
+  RegisterAddressSet(this.registered);
+
+  @override
+  List<bool>  get props => [registered];
+}
+
 class RegisterError extends RegisterState {
   final String message;
   RegisterError(this.message);

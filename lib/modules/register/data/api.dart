@@ -29,6 +29,57 @@ class RegisterProvider {
     }
   }
 
+  Future<bool> setPicture(UserData user) async {
+    CollectionReference _user = FirebaseFirestore.instance.collection('profile');
+    StorageReference _fstorage = FirebaseStorage.instance.ref().child('profile/${user.first_name}_${user.picture_name}');
+    StorageUploadTask _upload = _fstorage.putFile(user.picture);
+
+    try {
+      StorageTaskSnapshot _complete = await _upload.onComplete;
+      String _url = await _complete.ref.getDownloadURL();
+
+      print(_url);
+
+      SharedPreferences _storage = await SharedPreferences.getInstance();
+      String _uid = _storage.getString('uid');
+
+      final QuerySnapshot _raw = await _user.where('uid', isEqualTo: _uid).get();
+      final String _pid = _raw.docs.first.id;
+
+      await  _user.doc(_pid).update({
+        'picture_name': user.picture_name,
+        'picture': _url,
+        'updateAt': FieldValue.serverTimestamp()
+      });
+      return true;
+    } catch(e) {
+      return false;
+    }
+  }
+
+  Future<bool> setProfile(UserData user) async {
+    CollectionReference _user = FirebaseFirestore.instance.collection('profile');
+    try {
+
+      SharedPreferences _storage = await SharedPreferences.getInstance();
+      String _uid = _storage.getString('uid');
+
+      final QuerySnapshot _raw = await _user.where('uid', isEqualTo: _uid).get();
+      final String _pid = _raw.docs.first.id;
+
+      await  _user.doc(_pid).update({
+        'first_name': user.first_name,
+        'last_name': user.last_name,
+        'gender': user.gender,
+        'birth_date': user.birth_date,
+        'updateAt': FieldValue.serverTimestamp()
+      });
+      return true;
+    } catch(e) {
+      return false;
+    }
+  }
+
   Future<bool> setRegister(UserData user) async {
     CollectionReference _user = FirebaseFirestore.instance.collection('profile');
     StorageReference _fstorage = FirebaseStorage.instance.ref().child('profile/${user.first_name}_${user.picture_name}');
@@ -53,7 +104,52 @@ class RegisterProvider {
         'picture': _url,
         'updateAt': FieldValue.serverTimestamp()
       });
+      return true;
+    } catch(e) {
+      return false;
+    }
+  }
 
+  Future<bool> setAddress(UserData user) async {
+    CollectionReference _user = FirebaseFirestore.instance.collection('profile');
+    try {
+
+      SharedPreferences _storage = await SharedPreferences.getInstance();
+      String _uid = _storage.getString('uid');
+
+      final QuerySnapshot _raw = await _user.where('uid', isEqualTo: _uid).get();
+      final String _pid = _raw.docs.first.id;
+
+      await  _user.doc(_pid).update({
+        'address': user.address,
+        'city': user.city,
+        'province': user.province,
+        'postcode': user.postcode,
+        'updateAt': FieldValue.serverTimestamp()
+      });
+      return true;
+    } catch(e) {
+      return false;
+    }
+  }
+
+  Future<bool> putRegister(UserData user) async {
+    CollectionReference _user = FirebaseFirestore.instance.collection('profile');
+    try {
+
+      SharedPreferences _storage = await SharedPreferences.getInstance();
+      String _uid = _storage.getString('uid');
+
+      final QuerySnapshot _raw = await _user.where('uid', isEqualTo: _uid).get();
+      final String _pid = _raw.docs.first.id;
+
+      await  _user.doc(_pid).update({
+        'address': user.address,
+        'city': user.city,
+        'province': user.province,
+        'postcode': user.postcode,
+        'updateAt': FieldValue.serverTimestamp()
+      });
       return true;
     } catch(e) {
       return false;

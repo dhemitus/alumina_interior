@@ -1,0 +1,1 @@
+List<String> gender = ["Laki-laki", "Perempuan"];
