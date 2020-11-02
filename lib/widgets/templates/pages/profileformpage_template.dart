@@ -5,15 +5,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:alumina/widgets/widgets.dart';
 
 class ProfileFormPage extends StatelessWidget {
-  final Function getPhoto;
   final List<dynamic> genders;
   final dynamic gender;
   final Function onGender, onDate, onSubmit;
   final String date;
   final TextEditingController firstnameController, lastnameController;
-  final String picture;
+  final Widget photoBox;
 
-  ProfileFormPage({this.getPhoto, this.picture, this.genders, this.gender, this.onGender, this.onDate, this.date, this.onSubmit, this.firstnameController, this.lastnameController});
+  ProfileFormPage({@required this.photoBox, this.genders, this.gender, this.onGender, this.onDate, this.date, this.onSubmit, this.firstnameController, this.lastnameController});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +20,7 @@ class ProfileFormPage extends StatelessWidget {
       middle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          RegisterPhotoForm(onTap: getPhoto, picture: picture,),
+          photoBox,
           SizedBox(height: 56.0.h,),
           ContentHeader(
             head: 'isilah dengan data yang benar dan akurat ',

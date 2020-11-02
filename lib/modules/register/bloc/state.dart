@@ -29,20 +29,20 @@ class RegisterAdded extends RegisterState {
   List<bool>  get props => [registered];
 }
 
-class RegisterSeted extends RegisterState {
-  final bool registered;
-  RegisterSeted(this.registered);
+class ProfileGeted extends RegisterState {
+  final dynamic registered;
+  ProfileGeted(this.registered);
 
   @override
-  List<bool>  get props => [registered];
+  List<dynamic>  get props => [registered];
 }
 
 class RegisterPictureSet extends RegisterState {
-  final bool registered;
+  final dynamic registered;
   RegisterPictureSet(this.registered);
 
   @override
-  List<bool>  get props => [registered];
+  List<dynamic>  get props => [registered];
 }
 
 class RegisterProfileSet extends RegisterState {

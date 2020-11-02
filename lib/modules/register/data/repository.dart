@@ -8,8 +8,8 @@ class RegisterRepository {
 
   Future<bool> isRegistered({User user}) => _api.isRegistered(user: user);
   Future<bool> addRegister(User user) => _api.addRegister(user);
-  Future<bool> setPicture(UserData user) => _api.setPicture(user);
+  Future<dynamic> setPicture(UserData user) => _api.setPicture(user);
   Future<bool> setProfile(UserData user) => _api.setProfile(user);
-  Future<bool> setRegister(UserData user) => _api.setRegister(user);
+  Future<dynamic> getProfile() => _api.getProfile();
   Future<bool> setAddress(UserData user) => _api.setAddress(user);
 }

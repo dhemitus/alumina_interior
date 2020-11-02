@@ -17,12 +17,7 @@ class AddRegister extends RegisterEvent {
 
 }
 
-class SetRegister extends RegisterEvent {
-  final UserData user;
-  SetRegister(this.user);
-
-  @override
-  List<UserData> get props => [user];
+class GetProfile extends RegisterEvent {
 }
 
 class SetPicture extends RegisterEvent {

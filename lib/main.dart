@@ -16,7 +16,7 @@ Future<void> main() async {
         create: (context) => MessageBloc(MessageRepository())..add(StartMessage()),
       ),
       BlocProvider<RegisterBloc>(
-        create: (context) => RegisterBloc(RegisterRepository())..add(IsRegisterd()),
+        create: (context) => RegisterBloc(RegisterRepository())..add(IsRegisterd())..add(GetProfile()),
       ),
       BlocProvider<AuthenticationBloc>(
         create: (context) => AuthenticationBloc(AuthenticationRepository(), BlocProvider.of<RegisterBloc>(context))..add(IsSignInAuthentication()),

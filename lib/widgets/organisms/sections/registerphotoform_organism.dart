@@ -19,7 +19,7 @@ class RegisterPhotoForm extends StatelessWidget {
       );
     } else {
      return AvatarButton(
-       image: Utils.imageLocal(picture, null),
+       image: Utils.imageContainer(picture),
        onTap: onTap,
      );
     }
