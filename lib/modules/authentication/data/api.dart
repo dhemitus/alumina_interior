@@ -42,6 +42,7 @@ class AuthenticationProvider {
     try {
       final UserCredential rest = await _auth.createUserWithEmailAndPassword(
           email: user.username, password: user.password);
+      print(rest);
       return rest;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'weak-password') {
@@ -50,7 +51,7 @@ class AuthenticationProvider {
         print('The account already exists for that email.');
       }
     } catch (e) {
-
+      print(e.toString());
     }
   }
 

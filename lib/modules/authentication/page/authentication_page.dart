@@ -6,12 +6,12 @@ import 'package:alumina/modules/modules.dart';
 
 class AuthenticationPage extends StatelessWidget {
 
-  onEmail() {
-    print('email');
-  }
-
   @override
   Widget build(BuildContext context) {
+
+    onEmail() {
+      Navigator.of(context).pushNamed('/loginEmail');
+    }
 
     onFacebook() {
       print('facebook');

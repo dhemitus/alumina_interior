@@ -60,6 +60,24 @@ class AuthenticationBloc extends Bloc<AuthenticationEvent, AuthenticationState> 
       }
     }
 
+    if(event is EmailSignUpAuthentication) {
+      final UserCredential _user = await _repo.emailSignUp(event.user);
+
+      if(_user != null) {
+        _reg.add(AddRegister(_user.user));
+
+        final bool _sign = await _repo.getFirstSign();
+        if(_sign == false) {
+          await _repo.setFirstSign(true);
+        }
+        print(_sign);
+
+        yield AuthenticationSignIn(_user);
+      } else {
+        yield AuthenticationError('user empty');
+      }
+    }
+
     if(event is SignOutAuthentication) {
       final bool _out = await _repo.signOut();
 

@@ -3,14 +3,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 
-class RegisterProfileForm extends StatelessWidget {
+class ProfileForm extends StatelessWidget {
   final List<dynamic> genders;
   final dynamic gender;
   final Function onGender, onDate, onSubmit;
   final String date;
   final TextEditingController firstnameController, lastnameController;
 
-  RegisterProfileForm({this.genders, this.gender, this.onGender, this.onDate, this.date, this.onSubmit, this.firstnameController, this.lastnameController});
+  ProfileForm({this.genders, this.gender, this.onGender, this.onDate, this.date, this.onSubmit, this.firstnameController, this.lastnameController});
 
   @override
   Widget build(BuildContext context) {

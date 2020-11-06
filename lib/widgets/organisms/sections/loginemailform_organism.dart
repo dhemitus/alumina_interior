@@ -5,12 +5,13 @@ import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/shared/shared.dart' as Styles;
 import 'package:alumina/shared/shared.dart' as Iconic;
 
-class LoginEmailForm extends StatefulWidget {
-  @override
-  _LoginEmailFormState createState() => _LoginEmailFormState();
-}
+class LoginEmailForm extends StatelessWidget {
 
-class _LoginEmailFormState extends State<LoginEmailForm> {
+  final TextEditingController emailController, passwordController;
+  final Function onSubmit, onLink;
+  final String link;
+
+  LoginEmailForm({this.emailController, this.passwordController, this.link, this.onSubmit, this.onLink});
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +24,7 @@ class _LoginEmailFormState extends State<LoginEmailForm> {
             InputText(
               mode: Styles.StyleType.warning,
               hint: 'e-mail',
+              controller: emailController,
               suffix: BaseContainer(
                   width: 8.0.w,
                   height: 8.0.w,
@@ -35,6 +37,7 @@ class _LoginEmailFormState extends State<LoginEmailForm> {
             InputText(
               mode: Styles.StyleType.warning,
               hint: 'password',
+              controller: passwordController,
               password: true,
               suffix: ClipButton(
                 width: 8.0.w,
@@ -48,6 +51,17 @@ class _LoginEmailFormState extends State<LoginEmailForm> {
             PrimaryButton(
               mode: Styles.StyleType.warning,
               text: 'masuk',
+              onTap: onSubmit,
+            ),
+            SizedBox(
+              height: 6.0.w,
+            ),
+            Center(
+              child: SimpleButton(
+                text: link,
+                mode: Styles.StyleType.warning,
+                onTap: onLink,
+              ),
             )
           ],
         ),

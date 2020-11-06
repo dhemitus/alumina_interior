@@ -34,7 +34,9 @@ class MyApp extends StatelessWidget {
       title: 'Alumina Interior',
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
-        '/registerAddress': (BuildContext context) => RegisterAddressPage()
+        '/registerAddress': (BuildContext context) => RegisterAddressPage(),
+        '/loginEmail': (BuildContext context) => LoginEmailPage(),
+        '/registerEmail': (BuildContext context) => RegisterEmailPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

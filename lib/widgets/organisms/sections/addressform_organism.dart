@@ -3,11 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 
-class RegisterAddressForm extends StatelessWidget {
+class AddressForm extends StatelessWidget {
   final TextEditingController addressController, cityController, provinceController, postcodeController;
   final Function onSubmit;
 
-  RegisterAddressForm({this.addressController, this.cityController, this.provinceController, this.postcodeController, this.onSubmit});
+  AddressForm({this.addressController, this.cityController, this.provinceController, this.postcodeController, this.onSubmit});
 
   @override
   Widget build(BuildContext context) {

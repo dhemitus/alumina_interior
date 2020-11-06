@@ -93,28 +93,31 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
         }
 
         if(state is ProfileGeted) {
-          QueryDocumentSnapshot _data = state.registered.docs.first;
-          print(_data.get('picture'));
-          _picture_path = _data.get('picture');
+          if(state.registered != false) {
+            QueryDocumentSnapshot _data = state.registered.docs.first;
+            _picture_path = _data.get('picture');
+          }
         }
 
         if(state is RegisterPictureSet) {
-          QueryDocumentSnapshot _data = state.registered.docs.first;
-          print(_data.get('picture'));
-          _picture_path = _data.get('picture');
-          print(state.registered);
+          if(state.registered != false) {
+            QueryDocumentSnapshot _data = state.registered.docs.first;
+            _picture_path = _data.get('picture');
+          }
         }
 
         return ProfileFormPage(
           photoBox: RegisterPhotoPage(picture: _picture_path),
-          gender: _valGender,
-          genders: _listGender,
-          onGender: (val) => onGender(val),
-          onDate: (context) => onDate(),
-          date: _date,
-          firstnameController: _firstnameController,
-          lastnameController: _lastnameController,
-          onSubmit: (context) => onSubmit(),
+          formBox: ProfileForm(
+            gender: _valGender,
+            genders: _listGender,
+            onGender: (val) => onGender(val),
+            onDate: (context) => onDate(),
+            date: _date,
+            firstnameController: _firstnameController,
+            lastnameController: _lastnameController,
+            onSubmit: (context) => onSubmit(),
+          ),
         );
       },
     );

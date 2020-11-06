@@ -65,25 +65,27 @@ class _RegisterAddressPageState extends State<RegisterAddressPage> {
     super.dispose();
   }
 
+  void onSubmit() {
+    final UserData _user = UserData(
+        address: _address,
+        city: _city,
+        province: _province,
+        postcode: _postcode
+    );
+    BlocProvider.of<RegisterBloc>(context).add(SetAddress(_user));
+  }
+
   @override
   Widget build(BuildContext context) {
 
-    void onSubmit() {
-      final UserData _user = UserData(
-          address: _address,
-          city: _city,
-          province: _province,
-          postcode: _postcode
-      );
-      BlocProvider.of<RegisterBloc>(context).add(SetAddress(_user));
-    }
-
     return AddressFormPage(
-      addressController: _addressController,
-      cityController: _cityController,
-      provinceController: _provinceController,
-      postcodeController: _postcodeController,
-      onSubmit: (context) => onSubmit(),
+      formBox: AddressForm(
+        addressController: _addressController,
+        cityController: _cityController,
+        provinceController: _provinceController,
+        postcodeController: _postcodeController,
+        onSubmit: (context) => onSubmit(),
+      ),
     );
   }
 }

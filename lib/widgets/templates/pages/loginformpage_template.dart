@@ -4,6 +4,10 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:alumina/widgets/widgets.dart';
 
 class LoginFormPage extends StatelessWidget {
+  final Widget formBox;
+
+  LoginFormPage({@required this.formBox});
+
   @override
   Widget build(BuildContext context) {
     return Layout1(
@@ -14,7 +18,7 @@ class LoginFormPage extends StatelessWidget {
           body: 'pastikan anda mengingat kata sandi anda',
         ),
       ),
-      bottom: LoginEmailForm(),
+      bottom: formBox,
     );
   }
 }

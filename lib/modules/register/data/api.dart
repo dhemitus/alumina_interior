@@ -19,10 +19,12 @@ class RegisterProvider {
       SharedPreferences _storage = await SharedPreferences.getInstance();
       _storage.setString('uid', user.uid);
 
-      await _user.add({
-        'uid': user.uid,
-        'createAt': FieldValue.serverTimestamp()
-      });
+      final QuerySnapshot _raw = await _user.where('uid', isEqualTo: user.uid).get();
+
+      if(_raw.docs.length <= 0) {
+        await _user
+            .add({'uid': user.uid, 'createAt': FieldValue.serverTimestamp()});
+      }
       return true;
     } catch(e) {
       return false;
