@@ -1,8 +1,6 @@
 part of 'bloc.dart';
 
-
 abstract class AuthenticationEvent extends Equatable {
-
   @override
   List<Object> get props => [];
 }
@@ -23,6 +21,14 @@ class EmailSignUpAuthentication extends AuthenticationEvent {
 
   @override
   List<AuthUser> get props => [user];
+}
+
+class PhoneVerifyAuthentication extends AuthenticationEvent {
+  final String phone;
+  PhoneVerifyAuthentication({@required this.phone});
+
+  @override
+  List<String> get props => [phone];
 }
 
 class SignOutAuthentication extends AuthenticationEvent {}

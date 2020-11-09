@@ -56,12 +56,20 @@ class AuthenticationIsSignIn extends AuthenticationState {
   List<User> get props => [user];
 }
 
+class AuthenticationPhoneVerify extends AuthenticationState {
+  final AuthPhone phone;
+  AuthenticationPhoneVerify(this.phone);
+
+  @override
+  List<AuthPhone> get props => [phone];
+}
+
 class AuthenticationError extends AuthenticationState {
   final String message;
   AuthenticationError(this.message);
 
   @override
-  List<String>  get props => [message];
+  List<String> get props => [message];
 }
 
 class AuthenticationLoading extends AuthenticationState {

@@ -33,7 +33,6 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
     });
   }
 
-
   @override
   void initState() {
     print('cuk');
@@ -63,14 +62,15 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
         first_name: _firstName,
         last_name: _lastName,
         birth_date: _date,
-        gender: _valGender
-    );
+        gender: _valGender);
     BlocProvider.of<RegisterBloc>(context).add(SetProfile(_user));
   }
 
   void onDate() {
-    DatePicker.showDatePicker(context, showTitleActions: true, onChanged: (date) {
-      print('change $date in time zone ' + date.timeZoneOffset.inHours.toString());
+    DatePicker.showDatePicker(context, showTitleActions: true,
+        onChanged: (date) {
+      print('change $date in time zone ' +
+          date.timeZoneOffset.inHours.toString());
     }, onConfirm: (date) {
       print('confirm $date');
       setState(() {
@@ -81,26 +81,25 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-
     return BlocBuilder<RegisterBloc, RegisterState>(
-      builder: (BuildContext context, RegisterState state){
-        if(state is RegisterProfileSet) {
-          if(state.registered) {
+      builder: (BuildContext context, RegisterState state) {
+        if (state is RegisterProfileSet) {
+          if (state.registered) {
             WidgetsBinding.instance.addPostFrameCallback((_) {
               Navigator.of(context).pushReplacementNamed('/registerAddress');
             });
           }
         }
 
-        if(state is ProfileGeted) {
-          if(state.registered != false) {
+        if (state is ProfileGeted) {
+          if (state.registered != false) {
             QueryDocumentSnapshot _data = state.registered.docs.first;
             _picture_path = _data.get('picture');
           }
         }
 
-        if(state is RegisterPictureSet) {
-          if(state.registered != false) {
+        if (state is RegisterPictureSet) {
+          if (state.registered != false) {
             QueryDocumentSnapshot _data = state.registered.docs.first;
             _picture_path = _data.get('picture');
           }
@@ -121,6 +120,5 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
         );
       },
     );
-
   }
 }

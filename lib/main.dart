@@ -13,13 +13,18 @@ Future<void> main() async {
         create: (context) => InitBloc(InitRepository())..add(StartInit()),
       ),
       BlocProvider<MessageBloc>(
-        create: (context) => MessageBloc(MessageRepository())..add(StartMessage()),
+        create: (context) =>
+            MessageBloc(MessageRepository())..add(StartMessage()),
       ),
       BlocProvider<RegisterBloc>(
-        create: (context) => RegisterBloc(RegisterRepository())..add(IsRegisterd())..add(GetProfile()),
+        create: (context) => RegisterBloc(RegisterRepository())
+          ..add(IsRegisterd())
+          ..add(GetProfile()),
       ),
       BlocProvider<AuthenticationBloc>(
-        create: (context) => AuthenticationBloc(AuthenticationRepository(), BlocProvider.of<RegisterBloc>(context))..add(IsSignInAuthentication()),
+        create: (context) => AuthenticationBloc(
+            AuthenticationRepository(), BlocProvider.of<RegisterBloc>(context))
+          ..add(IsSignInAuthentication()),
       ),
     ],
     child: MyApp(),
@@ -27,13 +32,13 @@ Future<void> main() async {
 }
 
 class MyApp extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Alumina Interior',
       debugShowCheckedModeBanner: false,
       routes: <String, WidgetBuilder>{
+        '/phoneVerify': (BuildContext context) => PhoneVerifyPage(),
         '/registerAddress': (BuildContext context) => RegisterAddressPage(),
         '/loginEmail': (BuildContext context) => LoginEmailPage(),
         '/registerEmail': (BuildContext context) => RegisterEmailPage(),
@@ -43,10 +48,9 @@ class MyApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: BlocBuilder<MessageBloc, MessageState>(
-        builder: (BuildContext context, MessageState state) {
-          return HomePage();
-        }
-      ),
+          builder: (BuildContext context, MessageState state) {
+        return HomePage();
+      }),
     );
   }
 }

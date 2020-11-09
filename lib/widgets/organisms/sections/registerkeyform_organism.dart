@@ -5,12 +5,12 @@ import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/shared/shared.dart' as Iconic;
 import 'package:alumina/shared/shared.dart' as Styles;
 
-class RegisterKeyForm extends StatefulWidget {
-  @override
-  _RegisterKeyFormState createState() => _RegisterKeyFormState();
-}
+class RegisterKeyForm extends StatelessWidget {
+  final Function onSubmit;
+  final TextEditingController keyController;
 
-class _RegisterKeyFormState extends State<RegisterKeyForm> {
+  RegisterKeyForm({this.keyController, this.onSubmit});
+
   @override
   Widget build(BuildContext context) {
     return BaseContainer(
@@ -18,6 +18,7 @@ class _RegisterKeyFormState extends State<RegisterKeyForm> {
       child: InputText(
         mode: Styles.StyleType.warning,
         hint: 'secret key',
+        controller: keyController,
         suffix: BaseContainer(
           width: 100.0.w,
           height: 32.0.w,
@@ -26,6 +27,7 @@ class _RegisterKeyFormState extends State<RegisterKeyForm> {
             text: 'Selesai',
             width: 100.0.w,
             icon: Iconic.arrowightF1C3B9,
+            onTap: onSubmit,
           ),
         ),
       ),

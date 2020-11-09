@@ -8,9 +8,10 @@ class AuthenticationProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  Future<UserCredential> googleSignIn () async {
+  Future<UserCredential> googleSignIn() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
-    final GoogleSignInAuthentication googleAuth = await googleUser.authentication;
+    final GoogleSignInAuthentication googleAuth =
+        await googleUser.authentication;
     print(googleAuth);
     final AuthCredential credential = GoogleAuthProvider.credential(
       accessToken: googleAuth.accessToken,
@@ -20,14 +21,14 @@ class AuthenticationProvider {
     return _rest;
   }
 
-  Future<UserCredential> emailSignIn (AuthUser user) async {
+  Future<UserCredential> emailSignIn(AuthUser user) async {
 //    print(user);
     try {
       final UserCredential _rest = await _auth.signInWithEmailAndPassword(
         email: user.username,
         password: user.password,
       );
-  //    print(rest.user);
+      //    print(rest.user);
       return _rest;
     } on FirebaseAuthException catch (e) {
       if (e.code == 'user-not-found') {
@@ -38,7 +39,7 @@ class AuthenticationProvider {
     }
   }
 
-  Future<UserCredential> emailSignUp (AuthUser user) async {
+  Future<UserCredential> emailSignUp(AuthUser user) async {
     try {
       final UserCredential rest = await _auth.createUserWithEmailAndPassword(
           email: user.username, password: user.password);
@@ -57,13 +58,48 @@ class AuthenticationProvider {
 
   Future<bool> signOut() async {
     bool _google = await _googleSignIn.isSignedIn();
-    if(_google) await _googleSignIn.signOut();
+    if (_google) await _googleSignIn.signOut();
 
     //    bool _facebook = await _facebookSignIn.isLoggedIn;
     //    if(_facebook) await _facebookSignIn.logOut();
 
     await _auth.signOut();
     return true;
+  }
+
+  Future<AuthPhone> verifyPhone(String phone) async {
+    AuthPhone _result;
+    try {
+      await _auth.verifyPhoneNumber(
+          phoneNumber: phone,
+          timeout: Duration(seconds: 60),
+          verificationCompleted: (PhoneAuthCredential cred) {
+            _result = AuthPhone(
+                message: 'verificationCompleted', phone: phone, result: true);
+          },
+          verificationFailed: (FirebaseAuthException authException) {
+            _result = AuthPhone(
+                message: 'verificationFailed', phone: phone, result: false);
+          },
+          codeSent: (String verId, int forceCodeResend) {
+            print('sms sent');
+            _result = AuthPhone(
+                message: 'codeSent', phone: phone, result: true, verId: verId);
+            print(_result);
+          },
+          codeAutoRetrievalTimeout: (String verId) {
+            _result = AuthPhone(
+                message: 'codeAutoRetrievalTimeout',
+                phone: phone,
+                result: false,
+                verId: verId);
+          });
+      return _result;
+    } catch (e) {
+      print(e.toString());
+      _result = AuthPhone(message: e.toString(), phone: phone, result: false);
+      return _result;
+    }
   }
 
   Future<User> isSignedIn() async {

@@ -1,9 +1,9 @@
 import 'package:alumina/modules/modules.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/models/models.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RegisterAddressPage extends StatefulWidget {
   @override
@@ -70,22 +70,30 @@ class _RegisterAddressPageState extends State<RegisterAddressPage> {
         address: _address,
         city: _city,
         province: _province,
-        postcode: _postcode
-    );
+        postcode: _postcode);
     BlocProvider.of<RegisterBloc>(context).add(SetAddress(_user));
   }
 
   @override
   Widget build(BuildContext context) {
-
-    return AddressFormPage(
-      formBox: AddressForm(
-        addressController: _addressController,
-        cityController: _cityController,
-        provinceController: _provinceController,
-        postcodeController: _postcodeController,
-        onSubmit: (context) => onSubmit(),
-      ),
-    );
+    return BlocBuilder<RegisterBloc, RegisterState>(
+        builder: (BuildContext context, RegisterState state) {
+      if (state is RegisterAddressSet) {
+        if (state.registered) {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Navigator.of(context).pushReplacementNamed('/phoneVerify');
+          });
+        }
+      }
+      return AddressFormPage(
+        formBox: AddressForm(
+          addressController: _addressController,
+          cityController: _cityController,
+          provinceController: _provinceController,
+          postcodeController: _postcodeController,
+          onSubmit: (context) => onSubmit(),
+        ),
+      );
+    });
   }
 }

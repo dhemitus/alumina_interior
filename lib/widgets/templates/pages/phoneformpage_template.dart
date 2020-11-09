@@ -1,13 +1,24 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 
 class PhoneFormPage extends StatelessWidget {
+  final Widget formBox, confirmBox;
+
+  PhoneFormPage({this.formBox, this.confirmBox});
+
   @override
   Widget build(BuildContext context) {
-    return Layout1(
-      bottom: RegisterKeyForm(),
+    return Layout2(
+      top: Container(
+        alignment: Alignment.bottomLeft,
+        child: ContentHeader(
+          head: '\n\n\n',
+          body: 'nomor telepon diawali dengan +62',
+        ),
+      ),
+      middle: formBox,
+      bottom: confirmBox,
     );
   }
 }
