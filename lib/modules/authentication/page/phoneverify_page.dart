@@ -66,6 +66,11 @@ class _PhoneVerifyPageState extends State<PhoneVerifyPage> {
         builder: (BuildContext context, AuthenticationState state) {
       if (state is AuthenticationPhoneVerify) {
         _result = state.phone;
+        if (_result.message == 'verificationCompleted') {
+          WidgetsBinding.instance.addPostFrameCallback((_) {
+            Navigator.of(context).pushReplacementNamed('/front');
+          });
+        }
       } else if (state is AuthenticationOtpVerify) {
         WidgetsBinding.instance.addPostFrameCallback((_) {
           Navigator.of(context).pushReplacementNamed('/front');

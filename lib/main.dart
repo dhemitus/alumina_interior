@@ -41,6 +41,7 @@ class MyApp extends StatelessWidget {
         '/registerAddress': (BuildContext context) => RegisterAddressPage(),
         '/loginEmail': (BuildContext context) => LoginEmailPage(),
         '/registerEmail': (BuildContext context) => RegisterEmailPage(),
+        'front': (BuildContext context) => FrontPage(),
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

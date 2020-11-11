@@ -117,12 +117,11 @@ class AuthenticationBloc
       final PhoneAuthCredential _phone =
           await _repo.verifyOtp(event.phone.verId, event.phone.otp);
 
+      print(_phone);
       if (_phone != null) {
-        print('_success ' + _phone.toString());
         yield AuthenticationOtpVerify(_phone);
       } else {
         yield AuthenticationError('user empty');
-        print('_error ' + _phone.toString());
       }
     }
   }
