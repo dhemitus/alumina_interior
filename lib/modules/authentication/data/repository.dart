@@ -14,4 +14,7 @@ class AuthenticationRepository {
   Future<bool> setFirstSign(bool value) => _api.setFirstSign(value);
   Future<bool> getFirstSign() => _api.getFirstSign();
   Future<AuthPhone> verifyPhone(String phone) => _api.verifyPhone(phone);
+  Future<PhoneAuthCredential> verifyOtp(
+          String verificationId, String smsCode) =>
+      _api.verifyOtp(verificationId, smsCode);
 }

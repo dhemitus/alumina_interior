@@ -64,6 +64,14 @@ class AuthenticationPhoneVerify extends AuthenticationState {
   List<AuthPhone> get props => [phone];
 }
 
+class AuthenticationOtpVerify extends AuthenticationState {
+  final PhoneAuthCredential phone;
+  AuthenticationOtpVerify(this.phone);
+
+  @override
+  List<PhoneAuthCredential> get props => [phone];
+}
+
 class AuthenticationError extends AuthenticationState {
   final String message;
   AuthenticationError(this.message);

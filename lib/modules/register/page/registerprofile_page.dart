@@ -16,7 +16,7 @@ class RegisterProfilePage extends StatefulWidget {
 class _RegisterProfilePageState extends State<RegisterProfilePage> {
   List<String> _listGender = gender;
   String _valGender, _date, _firstName, _lastName;
-  String _picture_path;
+  String _picturePath;
 
   TextEditingController _firstnameController = new TextEditingController();
   TextEditingController _lastnameController = new TextEditingController();
@@ -59,9 +59,9 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
 
   void onSubmit() {
     final UserData _user = UserData(
-        first_name: _firstName,
-        last_name: _lastName,
-        birth_date: _date,
+        firstName: _firstName,
+        lastName: _lastName,
+        birthDate: _date,
         gender: _valGender);
     BlocProvider.of<RegisterBloc>(context).add(SetProfile(_user));
   }
@@ -94,19 +94,19 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
         if (state is ProfileGeted) {
           if (state.registered != false) {
             QueryDocumentSnapshot _data = state.registered.docs.first;
-            _picture_path = _data.get('picture');
+            _picturePath = _data.get('picture');
           }
         }
 
         if (state is RegisterPictureSet) {
           if (state.registered != false) {
             QueryDocumentSnapshot _data = state.registered.docs.first;
-            _picture_path = _data.get('picture');
+            _picturePath = _data.get('picture');
           }
         }
 
         return ProfileFormPage(
-          photoBox: RegisterPhotoPage(picture: _picture_path),
+          photoBox: RegisterPhotoPage(picture: _picturePath),
           formBox: ProfileForm(
             gender: _valGender,
             genders: _listGender,

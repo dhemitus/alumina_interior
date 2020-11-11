@@ -13,7 +13,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
   RegisterBloc(this._repo) : super(null);
 
-  @override
+//  @override
   RegisterState get initialState => RegisterInitial();
 
   @override
@@ -21,46 +21,45 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
     yield RegisterLoading();
 
     try {
-      if(event is AddRegister) {
+      if (event is AddRegister) {
         print('register added');
         bool _reg = await _repo.addRegister(event.user);
         print(_reg);
         yield RegisterAdded(_reg);
       }
 
-      if(event is GetProfile) {
+      if (event is GetProfile) {
         print('register seted');
         dynamic _reg = await _repo.getProfile();
         print(_reg);
         yield ProfileGeted(_reg);
       }
 
-      if(event is SetPicture) {
+      if (event is SetPicture) {
         print('register seted');
         dynamic _reg = await _repo.setPicture(event.user);
         print(_reg);
         yield RegisterPictureSet(_reg);
       }
 
-      if(event is SetProfile) {
+      if (event is SetProfile) {
         print('register seted');
         bool _reg = await _repo.setProfile(event.user);
         print(_reg);
         yield RegisterProfileSet(_reg);
       }
 
-      if(event is SetAddress) {
+      if (event is SetAddress) {
         print('register seted');
         bool _reg = await _repo.setAddress(event.user);
         print(_reg);
         yield RegisterAddressSet(_reg);
       }
 
-      if(event is IsRegisterd) {
+      if (event is IsRegisterd) {
         bool _reg = await _repo.isRegistered();
         yield RegisterCheck(_reg);
       }
-
     } catch (_) {
       yield RegisterError('register Error!!');
     }

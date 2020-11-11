@@ -13,27 +13,32 @@ class RegisterProvider {
   }
 
   Future<bool> addRegister(User user) async {
-    CollectionReference _user = FirebaseFirestore.instance.collection('profile');
+    CollectionReference _user =
+        FirebaseFirestore.instance.collection('profile');
 
     try {
       SharedPreferences _storage = await SharedPreferences.getInstance();
       _storage.setString('uid', user.uid);
 
-      final QuerySnapshot _raw = await _user.where('uid', isEqualTo: user.uid).get();
+      final QuerySnapshot _raw =
+          await _user.where('uid', isEqualTo: user.uid).get();
 
-      if(_raw.docs.length <= 0) {
+      if (_raw.docs.length <= 0) {
         await _user
             .add({'uid': user.uid, 'createAt': FieldValue.serverTimestamp()});
       }
       return true;
-    } catch(e) {
+    } catch (e) {
       return false;
     }
   }
 
   Future<dynamic> setPicture(UserData user) async {
-    CollectionReference _user = FirebaseFirestore.instance.collection('profile');
-    StorageReference _fstorage = FirebaseStorage.instance.ref().child('profile/${user.first_name}_${user.picture_name}');
+    CollectionReference _user =
+        FirebaseFirestore.instance.collection('profile');
+    StorageReference _fstorage = FirebaseStorage.instance
+        .ref()
+        .child('profile/${user.firstName}_${user.pictureName}');
     StorageUploadTask _upload = _fstorage.putFile(user.picture);
 
     try {
@@ -43,54 +48,57 @@ class RegisterProvider {
       SharedPreferences _storage = await SharedPreferences.getInstance();
       String _uid = _storage.getString('uid');
 
-      final QuerySnapshot _raw = await _user.where('uid', isEqualTo: _uid).get();
+      final QuerySnapshot _raw =
+          await _user.where('uid', isEqualTo: _uid).get();
       final String _pid = _raw.docs.first.id;
 
       await _user.doc(_pid).update({
-        'picture_name': user.picture_name,
+        'picture_name': user.pictureName,
         'picture': _url,
         'updateAt': FieldValue.serverTimestamp()
       });
       return await _user.where('uid', isEqualTo: _uid).get();
-    } catch(e) {
+    } catch (e) {
       return false;
     }
   }
 
   Future<bool> setProfile(UserData user) async {
-    CollectionReference _user = FirebaseFirestore.instance.collection('profile');
+    CollectionReference _user =
+        FirebaseFirestore.instance.collection('profile');
     try {
-
       SharedPreferences _storage = await SharedPreferences.getInstance();
       String _uid = _storage.getString('uid');
 
-      final QuerySnapshot _raw = await _user.where('uid', isEqualTo: _uid).get();
+      final QuerySnapshot _raw =
+          await _user.where('uid', isEqualTo: _uid).get();
       final String _pid = _raw.docs.first.id;
 
       await _user.doc(_pid).update({
-        'first_name': user.first_name,
-        'last_name': user.last_name,
+        'first_name': user.firstName,
+        'last_name': user.lastName,
         'gender': user.gender,
-        'birth_date': user.birth_date,
+        'birth_date': user.birthDate,
         'updateAt': FieldValue.serverTimestamp()
       });
       return true;
-    } catch(e) {
+    } catch (e) {
       return false;
     }
   }
 
   Future<bool> setAddress(UserData user) async {
-    CollectionReference _user = FirebaseFirestore.instance.collection('profile');
+    CollectionReference _user =
+        FirebaseFirestore.instance.collection('profile');
     try {
-
       SharedPreferences _storage = await SharedPreferences.getInstance();
       String _uid = _storage.getString('uid');
 
-      final QuerySnapshot _raw = await _user.where('uid', isEqualTo: _uid).get();
+      final QuerySnapshot _raw =
+          await _user.where('uid', isEqualTo: _uid).get();
       final String _pid = _raw.docs.first.id;
 
-      await  _user.doc(_pid).update({
+      await _user.doc(_pid).update({
         'address': user.address,
         'city': user.city,
         'province': user.province,
@@ -98,22 +106,24 @@ class RegisterProvider {
         'updateAt': FieldValue.serverTimestamp()
       });
       return true;
-    } catch(e) {
+    } catch (e) {
       return false;
     }
   }
 
   Future<dynamic> getProfile() async {
-    CollectionReference _user = FirebaseFirestore.instance.collection('profile');
+    CollectionReference _user =
+        FirebaseFirestore.instance.collection('profile');
     try {
       SharedPreferences _storage = await SharedPreferences.getInstance();
       String _uid = _storage.getString('uid');
 
-      final QuerySnapshot _raw = await _user.where('uid', isEqualTo: _uid).get();
+      final QuerySnapshot _raw =
+          await _user.where('uid', isEqualTo: _uid).get();
       print(_raw.docs.first.get('picture_name'));
 
       return _raw;
-    } catch(e) {
+    } catch (e) {
       return false;
     }
   }

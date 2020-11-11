@@ -11,13 +11,18 @@ class InputOption extends StatelessWidget {
   final Function onChange;
   final String hint;
 
-  InputOption({@required this.values, this.hint = '', this.mode = Styles.StyleType.primary, this.value = null, this.onChange});
+  InputOption(
+      {@required this.values,
+      this.hint = '',
+      this.mode = Styles.StyleType.primary,
+      this.value,
+      this.onChange});
 
   @override
   Widget build(BuildContext context) {
     Color border;
 
-    switch(mode) {
+    switch (mode) {
       case Styles.StyleType.primary:
         border = Styles.blueDDE9FB;
         break;
@@ -32,23 +37,22 @@ class InputOption extends StatelessWidget {
     return BaseContainer(
       padding: EdgeInsets.only(left: 10.0.w, right: 3.0.w),
       alignment: Alignment.centerLeft,
-      border: Border.all(
-          color: border,
-          width: 1.0.w
-      ),
+      border: Border.all(color: border, width: 1.0.w),
       child: DropdownButtonHideUnderline(
           child: DropdownButton(
-            hint: BodyText2(hint, color: Styles.blueAEC0DB,),
+        hint: BodyText2(
+          hint,
+          color: Styles.blueAEC0DB,
+        ),
+        value: value,
+        items: values.map((value) {
+          return DropdownMenuItem(
+            child: BodyText2(value, color: Styles.blue2D415F),
             value: value,
-            items: values.map((value) {
-              return DropdownMenuItem(
-                child: BodyText2(value, color: Styles.blue2D415F),
-                value: value,
-              );
-            }).toList(),
-            onChanged: onChange,
-          )
-      ),
+          );
+        }).toList(),
+        onChanged: onChange,
+      )),
     );
   }
 }

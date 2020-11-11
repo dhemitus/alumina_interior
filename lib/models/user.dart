@@ -9,13 +9,13 @@ class AuthUser extends Object {
 }
 
 class UserData extends Object {
-  final String first_name;
-  final String last_name;
+  final String firstName;
+  final String lastName;
   final String gender;
-  final String birth_date;
+  final String birthDate;
   final String token;
   final String uid;
-  final String picture_name;
+  final String pictureName;
   final File picture;
   final String address;
   final String city;
@@ -26,14 +26,14 @@ class UserData extends Object {
   final String updateAt;
 
   UserData(
-      {this.first_name,
-      this.last_name,
+      {this.firstName,
+      this.lastName,
       this.gender,
-      this.birth_date,
+      this.birthDate,
       this.token,
       this.uid,
       this.picture,
-      this.picture_name,
+      this.pictureName,
       this.address,
       this.city,
       this.province,

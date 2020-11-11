@@ -7,6 +7,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthenticationProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
+  String _verify;
+  AuthPhone _result;
 
   Future<UserCredential> googleSignIn() async {
     final GoogleSignInAccount googleUser = await _googleSignIn.signIn();
@@ -36,6 +38,10 @@ class AuthenticationProvider {
       } else if (e.code == 'wrong-password') {
         print('Wrong password provided for that user.');
       }
+      return null;
+    } catch (e) {
+      print(e.toString());
+      return null;
     }
   }
 
@@ -51,8 +57,10 @@ class AuthenticationProvider {
       } else if (e.code == 'email-already-in-use') {
         print('The account already exists for that email.');
       }
+      return null;
     } catch (e) {
       print(e.toString());
+      return null;
     }
   }
 
@@ -68,38 +76,58 @@ class AuthenticationProvider {
   }
 
   Future<AuthPhone> verifyPhone(String phone) async {
-    AuthPhone _result;
     try {
       await _auth.verifyPhoneNumber(
           phoneNumber: phone,
           timeout: Duration(seconds: 60),
-          verificationCompleted: (PhoneAuthCredential cred) {
-            _result = AuthPhone(
-                message: 'verificationCompleted', phone: phone, result: true);
-          },
-          verificationFailed: (FirebaseAuthException authException) {
-            _result = AuthPhone(
-                message: 'verificationFailed', phone: phone, result: false);
-          },
-          codeSent: (String verId, int forceCodeResend) {
-            print('sms sent');
-            _result = AuthPhone(
-                message: 'codeSent', phone: phone, result: true, verId: verId);
-            print(_result);
-          },
-          codeAutoRetrievalTimeout: (String verId) {
-            _result = AuthPhone(
-                message: 'codeAutoRetrievalTimeout',
-                phone: phone,
-                result: false,
-                verId: verId);
-          });
-      return _result;
+          verificationCompleted: (PhoneAuthCredential cred) => {
+                _result = new AuthPhone(
+                    message: 'verificationCompleted',
+                    phone: phone,
+                    result: true)
+//            print('complete');
+//                this._verify = 'verificationCompleted $phone'
+              },
+          verificationFailed: (FirebaseAuthException authException) => {
+                _result = new AuthPhone(
+                    message: 'verificationFailed', phone: phone, result: false)
+//            print('failed');
+//                this._verify = 'verificationFailed $phone'
+              },
+          codeSent: (String verId, int forceCodeResend) => {
+//            print('sms sent $verId');
+                _result = new AuthPhone(
+                    message: 'codeSent',
+                    phone: phone,
+                    result: true,
+                    verId: verId)
+
+//                this._verify = 'codeSent $verId'
+              },
+          codeAutoRetrievalTimeout: (String verId) => {
+                _result = new AuthPhone(
+                    message: 'codeAutoRetrievalTimeout',
+                    phone: phone,
+                    result: false,
+                    verId: verId)
+//                this._verify = 'codeAutoRetrievalTimeout $verId'
+              });
+//      print(this._verify);
+
+      return this._result;
     } catch (e) {
       print(e.toString());
-      _result = AuthPhone(message: e.toString(), phone: phone, result: false);
-      return _result;
+      _result =
+          new AuthPhone(message: e.toString(), phone: phone, result: false);
+      this._verify = e.toString();
+      return this._result;
     }
+  }
+
+  Future<PhoneAuthCredential> verifyOtp(
+      String verificationId, String smsCode) async {
+    return PhoneAuthProvider.credential(
+        verificationId: verificationId, smsCode: smsCode);
   }
 
   Future<User> isSignedIn() async {

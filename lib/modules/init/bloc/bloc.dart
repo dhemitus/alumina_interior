@@ -6,13 +6,12 @@ import 'package:alumina/modules/modules.dart';
 part './event.dart';
 part './state.dart';
 
-
 class InitBloc extends Bloc<InitEvent, InitState> {
   final InitRepository _repo;
 
   InitBloc(this._repo) : super(null);
 
-  @override
+//  @override
   InitState get initialState => InitInitial();
 
   @override
@@ -20,11 +19,10 @@ class InitBloc extends Bloc<InitEvent, InitState> {
     yield InitLoading();
 
     try {
-      if(event is StartInit) {
+      if (event is StartInit) {
         bool _init = await _repo.initialize();
         yield InitLoaded(_init);
       }
-
     } catch (_) {
       yield InitError('init Error!!');
     }

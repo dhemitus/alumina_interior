@@ -31,6 +31,14 @@ class PhoneVerifyAuthentication extends AuthenticationEvent {
   List<String> get props => [phone];
 }
 
+class OtpVerifyAuthentication extends AuthenticationEvent {
+  final AuthPhone phone;
+  OtpVerifyAuthentication({@required this.phone});
+
+  @override
+  List<AuthPhone> get props => [phone];
+}
+
 class SignOutAuthentication extends AuthenticationEvent {}
 
 class IsSignInAuthentication extends AuthenticationEvent {}

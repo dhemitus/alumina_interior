@@ -17,7 +17,7 @@ class AuthenticationBloc
 
   AuthenticationBloc(this._repo, this._reg) : super(null);
 
-  @override
+//  @override
   AuthenticationState get initialState => AuthenticationInit();
 
   @override
@@ -105,10 +105,24 @@ class AuthenticationBloc
       final AuthPhone _phone = await _repo.verifyPhone(event.phone);
 
       if (_phone != null) {
-        print('_phone' + _phone.toString());
+        print('_success ' + _phone.toString());
         yield AuthenticationPhoneVerify(_phone);
       } else {
         yield AuthenticationError('user empty');
+        print('_error ' + _phone.toString());
+      }
+    }
+
+    if (event is OtpVerifyAuthentication) {
+      final PhoneAuthCredential _phone =
+          await _repo.verifyOtp(event.phone.verId, event.phone.otp);
+
+      if (_phone != null) {
+        print('_success ' + _phone.toString());
+        yield AuthenticationOtpVerify(_phone);
+      } else {
+        yield AuthenticationError('user empty');
+        print('_error ' + _phone.toString());
       }
     }
   }

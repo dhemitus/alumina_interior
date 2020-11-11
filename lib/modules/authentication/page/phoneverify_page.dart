@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/modules/modules.dart';
+import 'package:alumina/models/models.dart';
 
 class PhoneVerifyPage extends StatefulWidget {
   @override
@@ -11,6 +12,7 @@ class PhoneVerifyPage extends StatefulWidget {
 
 class _PhoneVerifyPageState extends State<PhoneVerifyPage> {
   String _phone, _key;
+  AuthPhone _result;
 
   TextEditingController _phoneController = new TextEditingController();
   TextEditingController _keyController = new TextEditingController();
@@ -49,15 +51,27 @@ class _PhoneVerifyPageState extends State<PhoneVerifyPage> {
         .add(PhoneVerifyAuthentication(phone: _phone));
   }
 
-  void onSubmit() {}
+  void onSubmit() {
+    print('set key $_key');
+    print(_result.message);
+    if (_result.message == 'codeSent') {
+      BlocProvider.of<AuthenticationBloc>(context).add(OtpVerifyAuthentication(
+          phone: AuthPhone(phone: _phone, verId: _result.verId, otp: _key)));
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<AuthenticationBloc, AuthenticationState>(
         builder: (BuildContext context, AuthenticationState state) {
       if (state is AuthenticationPhoneVerify) {
-        print(state.phone);
+        _result = state.phone;
+      } else if (state is AuthenticationOtpVerify) {
+        WidgetsBinding.instance.addPostFrameCallback((_) {
+          Navigator.of(context).pushReplacementNamed('/front');
+        });
       }
+
       return PhoneFormPage(
         formBox: RegisterPhoneForm(
           phoneController: _phoneController,

@@ -11,7 +11,7 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
 
   MessageBloc(this._repo) : super(null);
 
-  @override
+//  @override
   MessageState get initialState => MessageInitial();
 
   @override
@@ -19,11 +19,10 @@ class MessageBloc extends Bloc<MessageEvent, MessageState> {
     yield MessageLoading();
 
     try {
-      if(event is StartMessage) {
+      if (event is StartMessage) {
         await _repo.initialize();
         yield MessageLoaded();
       }
-
     } catch (_) {
       yield MessageError('init message Error!!');
     }
