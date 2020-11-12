@@ -106,6 +106,9 @@ class AuthenticationBloc
 
       if (_phone != null) {
         print('_success ' + _phone.toString());
+        final UserData _user = UserData(phone: event.phone);
+        _reg.add(SetPhone(_user));
+
         yield AuthenticationPhoneVerify(_phone);
       } else {
         yield AuthenticationError('user empty');

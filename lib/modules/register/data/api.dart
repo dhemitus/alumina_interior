@@ -12,6 +12,11 @@ class RegisterProvider {
     return _storage.getBool('registered') ?? false;
   }
 
+  Future<bool> setRegister() async {
+    SharedPreferences _storage = await SharedPreferences.getInstance();
+    return _storage.setBool('registered', true);
+  }
+
   Future<bool> addRegister(User user) async {
     CollectionReference _user =
         FirebaseFirestore.instance.collection('profile');
@@ -105,6 +110,25 @@ class RegisterProvider {
         'postcode': user.postcode,
         'updateAt': FieldValue.serverTimestamp()
       });
+      return true;
+    } catch (e) {
+      return false;
+    }
+  }
+
+  Future<bool> setPhone(UserData user) async {
+    CollectionReference _user =
+        FirebaseFirestore.instance.collection('profile');
+    try {
+      SharedPreferences _storage = await SharedPreferences.getInstance();
+      String _uid = _storage.getString('uid');
+
+      final QuerySnapshot _raw =
+          await _user.where('uid', isEqualTo: _uid).get();
+      final String _pid = _raw.docs.first.id;
+
+      await _user.doc(_pid).update(
+          {'phone': user.phone, 'updateAt': FieldValue.serverTimestamp()});
       return true;
     } catch (e) {
       return false;

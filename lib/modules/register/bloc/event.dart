@@ -1,7 +1,6 @@
 part of './bloc.dart';
 
 abstract class RegisterEvent extends Equatable {
-
   @override
   List<Object> get props => [];
 }
@@ -14,11 +13,9 @@ class AddRegister extends RegisterEvent {
 
   @override
   List<User> get props => [user];
-
 }
 
-class GetProfile extends RegisterEvent {
-}
+class GetProfile extends RegisterEvent {}
 
 class SetPicture extends RegisterEvent {
   final UserData user;
@@ -39,6 +36,14 @@ class SetProfile extends RegisterEvent {
 class SetAddress extends RegisterEvent {
   final UserData user;
   SetAddress(this.user);
+
+  @override
+  List<UserData> get props => [user];
+}
+
+class SetPhone extends RegisterEvent {
+  final UserData user;
+  SetPhone(this.user);
 
   @override
   List<UserData> get props => [user];

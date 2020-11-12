@@ -4,21 +4,19 @@ abstract class RegisterState extends Equatable {
   RegisterState();
 
   @override
-  List<Object>  get props => [];
+  List<Object> get props => [];
 }
 
-class RegisterInitial extends RegisterState {
-}
+class RegisterInitial extends RegisterState {}
 
-class RegisterLoading extends RegisterState {
-}
+class RegisterLoading extends RegisterState {}
 
 class RegisterCheck extends RegisterState {
   final bool registered;
   RegisterCheck(this.registered);
 
   @override
-  List<bool>  get props => [registered];
+  List<bool> get props => [registered];
 }
 
 class RegisterAdded extends RegisterState {
@@ -26,7 +24,7 @@ class RegisterAdded extends RegisterState {
   RegisterAdded(this.registered);
 
   @override
-  List<bool>  get props => [registered];
+  List<bool> get props => [registered];
 }
 
 class ProfileGeted extends RegisterState {
@@ -34,7 +32,7 @@ class ProfileGeted extends RegisterState {
   ProfileGeted(this.registered);
 
   @override
-  List<dynamic>  get props => [registered];
+  List<dynamic> get props => [registered];
 }
 
 class RegisterPictureSet extends RegisterState {
@@ -42,7 +40,7 @@ class RegisterPictureSet extends RegisterState {
   RegisterPictureSet(this.registered);
 
   @override
-  List<dynamic>  get props => [registered];
+  List<dynamic> get props => [registered];
 }
 
 class RegisterProfileSet extends RegisterState {
@@ -50,7 +48,7 @@ class RegisterProfileSet extends RegisterState {
   RegisterProfileSet(this.registered);
 
   @override
-  List<bool>  get props => [registered];
+  List<bool> get props => [registered];
 }
 
 class RegisterAddressSet extends RegisterState {
@@ -58,7 +56,15 @@ class RegisterAddressSet extends RegisterState {
   RegisterAddressSet(this.registered);
 
   @override
-  List<bool>  get props => [registered];
+  List<bool> get props => [registered];
+}
+
+class RegisterPhoneSet extends RegisterState {
+  final bool registered;
+  RegisterPhoneSet(this.registered);
+
+  @override
+  List<bool> get props => [registered];
 }
 
 class RegisterError extends RegisterState {
@@ -66,5 +72,5 @@ class RegisterError extends RegisterState {
   RegisterError(this.message);
 
   @override
-  List<String>  get props => [message];
+  List<String> get props => [message];
 }
