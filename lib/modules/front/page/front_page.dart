@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:alumina/widgets/widgets.dart';
+import 'package:alumina/modules/modules.dart';
 
 class FrontPage extends StatefulWidget {
   @override
@@ -19,7 +20,7 @@ class _FrontPageState extends State<FrontPage> {
   Widget _content() {
     switch (_menu) {
       case "Setting":
-        return SettingMenu();
+        return SettingPage();
         break;
       case "archive":
         return Container();
