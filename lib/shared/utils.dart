@@ -12,12 +12,17 @@ double setPoint(double i) {
 num setMaxDim(double i) {
   return max(ScreenUtil().scaleHeight, ScreenUtil().scaleWidth) * i;
 }
+
 num setMinDim(double i) {
   return min(ScreenUtil().scaleHeight, ScreenUtil().scaleWidth) * i;
 }
 
 num getWidth() {
   return ScreenUtil().screenWidth;
+}
+
+num getHeight() {
+  return ScreenUtil().screenHeight;
 }
 
 void initScreen(BuildContext context) {
@@ -30,21 +35,14 @@ void initSystem() {
       statusBarIconBrightness: Brightness.dark,
       systemNavigationBarColor: Colors.white,
       systemNavigationBarIconBrightness: Brightness.dark,
-      systemNavigationBarDividerColor: Colors.white
-  ));
+      systemNavigationBarDividerColor: Colors.white));
 }
 
 DecorationImage imageContainer(String image) {
-  return DecorationImage(
-      fit: BoxFit.cover,
-      image: NetworkImage(image)
-  );
+  return DecorationImage(fit: BoxFit.cover, image: NetworkImage(image));
 }
 
 DecorationImage imageLocal(String image, ColorFilter filter) {
   return DecorationImage(
-    fit: BoxFit.cover,
-    image: AssetImage(image),
-    colorFilter: filter
-  );
+      fit: BoxFit.cover, image: AssetImage(image), colorFilter: filter);
 }

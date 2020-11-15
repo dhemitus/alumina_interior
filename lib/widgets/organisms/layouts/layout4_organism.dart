@@ -3,11 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class Layout4 extends StatelessWidget {
   final Widget left;
-  final Widget top;
-  final Widget middle;
-  final Widget bottom;
+  final Widget right;
 
-  Layout4({this.left, this.top, this.middle, this.bottom});
+  Layout4({this.left, this.right});
 
   @override
   Widget build(BuildContext context) {
@@ -22,22 +20,9 @@ class Layout4 extends StatelessWidget {
                 child: left,
               ),
               Expanded(
-                child: Column(
-                  children: <Widget>[
-                    Container(
-                      alignment: Alignment.bottomLeft,
-                      height: 120.0.w,
-                      child: top,
-                    ),
-                    Container(
-                      height: 206.0.w,
-                      child: middle,
-                    ),
-                    Container(
-                      alignment: Alignment.topLeft,
-                      child: bottom,
-                    ),
-                  ],
+                child: Container(
+                  alignment: Alignment.topLeft,
+                  child: right,
                 ),
               ),
             ],

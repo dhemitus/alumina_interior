@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
-import 'package:alumina/models/models.dart';
 
 class FrontDisplayPage extends StatelessWidget {
   final Function onTab;
+  final Widget content;
 
-  FrontDisplayPage({this.onTab});
+  FrontDisplayPage({this.onTab, this.content});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class FrontDisplayPage extends StatelessWidget {
           onTap: onTab,
         )),
       ),
-      bottom: MenuSetting(),
+      right: content,
     );
   }
 }

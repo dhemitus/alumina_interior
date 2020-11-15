@@ -2,13 +2,39 @@ import 'package:flutter/material.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 
-class FrontPage extends StatelessWidget {
+class FrontPage extends StatefulWidget {
+  @override
+  _FrontPageState createState() => _FrontPageState();
+}
+
+class _FrontPageState extends State<FrontPage> {
+  String _menu = 'Home';
+
   void _onTab(String val) {
-    print('tab $val');
+    setState(() {
+      _menu = val;
+    });
+  }
+
+  Widget _content() {
+    switch (_menu) {
+      case "Setting":
+        return SettingMenu();
+        break;
+      case "archive":
+        return Container();
+        break;
+      default:
+        return Container();
+        break;
+    }
   }
 
   @override
   Widget build(BuildContext context) {
-    return FrontDisplayPage(onTab: _onTab);
+    return FrontDisplayPage(
+      onTab: _onTab,
+      content: _content(),
+    );
   }
 }
