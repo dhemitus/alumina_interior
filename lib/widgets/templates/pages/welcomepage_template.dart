@@ -3,9 +3,6 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 
-
-import '../../widgets.dart';
-
 class WelcomePage extends StatelessWidget {
   final Function onGoogle;
   final Function onEmail;
@@ -16,18 +13,17 @@ class WelcomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Layout3(
-      back: WelcomeBackground(),
-      front:
-        BaseContainer(
+        back: WelcomeBackground(),
+        front: BaseContainer(
           padding: EdgeInsets.only(top: 142.0.h),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               WelcomeHeader(),
-              LoginOption(onEmail: onEmail, onGoogle: onGoogle, onFacebook: onFacebook),
+              LoginOption(
+                  onEmail: onEmail, onGoogle: onGoogle, onFacebook: onFacebook),
             ],
           ),
-        )
-    );
+        ));
   }
 }
