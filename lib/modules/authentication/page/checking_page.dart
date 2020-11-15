@@ -10,18 +10,21 @@ class CheckingPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<RegisterBloc, RegisterState>(
         builder: (BuildContext context, RegisterState state) {
+      print(state);
       if (state is RegisterCheck) {
+        print('check ${state.registered}');
         if (state.registered) {
 //            return LoadPage(title: 'register ${state.registered}',);
           print(state.registered);
           return FrontPage();
           //front
         } else {
-          print(state.registered);
+          print('uncheck ${state.registered}');
           return RegisterProfilePage();
 //            return AuthenticationPage();
         }
       } else {
+        print('nocheck false');
         return RegisterProfilePage();
 //          return AuthenticationPage();
       }

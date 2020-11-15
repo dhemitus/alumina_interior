@@ -28,12 +28,12 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
         yield RegisterAdded(_reg);
       }
 
-      if (event is GetProfile) {
+/*      if (event is GetProfile) {
         print('register seted');
         dynamic _reg = await _repo.getProfile();
         print(_reg);
         yield ProfileGeted(_reg);
-      }
+      }*/
 
       if (event is SetPicture) {
         print('register picture seted');
@@ -66,6 +66,7 @@ class RegisterBloc extends Bloc<RegisterEvent, RegisterState> {
 
       if (event is IsRegisterd) {
         bool _reg = await _repo.isRegistered();
+        print('register is $_reg');
         yield RegisterCheck(_reg);
       }
     } catch (_) {

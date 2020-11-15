@@ -17,6 +17,7 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
   List<String> _listGender = gender;
   String _valGender, _date, _firstName, _lastName;
   String _picturePath;
+  bool _registered;
 
   TextEditingController _firstnameController = new TextEditingController();
   TextEditingController _lastnameController = new TextEditingController();
@@ -91,13 +92,6 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
           }
         }
 
-        if (state is ProfileGeted) {
-          if (state.registered != false) {
-            QueryDocumentSnapshot _data = state.registered.docs.first;
-            _picturePath = _data.get('picture');
-          }
-        }
-
         if (state is RegisterPictureSet) {
           if (state.registered != false) {
             QueryDocumentSnapshot _data = state.registered.docs.first;
@@ -105,19 +99,28 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
           }
         }
 
-        return ProfileFormPage(
-          photoBox: RegisterPhotoPage(picture: _picturePath),
-          formBox: ProfileForm(
-            gender: _valGender,
-            genders: _listGender,
-            onGender: (val) => onGender(val),
-            onDate: (context) => onDate(),
-            date: _date,
-            firstnameController: _firstnameController,
-            lastnameController: _lastnameController,
-            onSubmit: (context) => onSubmit(),
-          ),
-        );
+        return BlocBuilder<ProfileBloc, ProfileState>(
+            builder: (BuildContext context, ProfileState state) {
+          if (state is ProfileGeted) {
+            if (state.registered != false) {
+              QueryDocumentSnapshot _data = state.registered.docs.first;
+              _picturePath = _data.get('picture');
+            }
+          }
+          return ProfileFormPage(
+            photoBox: RegisterPhotoPage(picture: _picturePath),
+            formBox: ProfileForm(
+              gender: _valGender,
+              genders: _listGender,
+              onGender: (val) => onGender(val),
+              onDate: (context) => onDate(),
+              date: _date,
+              firstnameController: _firstnameController,
+              lastnameController: _lastnameController,
+              onSubmit: (context) => onSubmit(),
+            ),
+          );
+        });
       },
     );
   }

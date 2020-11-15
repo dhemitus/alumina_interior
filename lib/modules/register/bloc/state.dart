@@ -27,13 +27,13 @@ class RegisterAdded extends RegisterState {
   List<bool> get props => [registered];
 }
 
-class ProfileGeted extends RegisterState {
+/*class ProfileGeted extends RegisterState {
   final dynamic registered;
   ProfileGeted(this.registered);
 
   @override
   List<dynamic> get props => [registered];
-}
+}*/
 
 class RegisterPictureSet extends RegisterState {
   final dynamic registered;

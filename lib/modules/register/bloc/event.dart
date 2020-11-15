@@ -15,7 +15,7 @@ class AddRegister extends RegisterEvent {
   List<User> get props => [user];
 }
 
-class GetProfile extends RegisterEvent {}
+//class GetProfile extends RegisterEvent {}
 
 class SetPicture extends RegisterEvent {
   final UserData user;

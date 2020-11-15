@@ -10,18 +10,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     Utils.initScreen(context);
     return BlocBuilder<InitBloc, InitState>(
-      builder: (BuildContext context, InitState state) {
-        if (state is InitLoading) {
-          return LoadPage(title: 'load from homepage...',);
-        } else if (state is InitLoaded) {
-//          return CheckingPage();
-          return AuthenticationPage();
-        } else if (state is InitError) {
-          return ErrorPage();
-        } else {
-          return WaitPage();
-        }
+        builder: (BuildContext context, InitState state) {
+      if (state is InitLoading) {
+        return LoadPage(
+          title: 'load from homepage...',
+        );
+      } else if (state is InitLoaded) {
+        return AuthenticationPage();
+      } else if (state is InitError) {
+        return ErrorPage();
+      } else {
+        return WaitPage();
       }
-    );
+    });
   }
 }

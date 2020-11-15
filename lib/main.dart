@@ -16,10 +16,11 @@ Future<void> main() async {
             MessageBloc(MessageRepository())..add(StartMessage()),
       ),
       BlocProvider<RegisterBloc>(
-        create: (context) => RegisterBloc(RegisterRepository())
-          ..add(IsRegisterd())
-          ..add(GetProfile()),
-      ),
+          create: (context) =>
+              RegisterBloc(RegisterRepository())..add(IsRegisterd())),
+      BlocProvider<ProfileBloc>(
+          create: (context) =>
+              ProfileBloc(ProfileRepository())..add(GetProfile())),
       BlocProvider<AuthenticationBloc>(
         create: (context) => AuthenticationBloc(
             AuthenticationRepository(), BlocProvider.of<RegisterBloc>(context))

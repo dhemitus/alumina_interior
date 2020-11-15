@@ -10,15 +10,19 @@ class PhoneFormPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Layout2(
-      top: Container(
+      middle: Container(
         alignment: Alignment.bottomLeft,
         child: ContentHeader(
           head: '\n\n\n',
           body: 'nomor telepon diawali dengan +62',
         ),
       ),
-      middle: formBox,
-      bottom: confirmBox,
+      bottom: Column(
+        children: [
+          formBox,
+          confirmBox,
+        ],
+      ),
     );
   }
 }

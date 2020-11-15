@@ -135,7 +135,7 @@ class RegisterProvider {
     }
   }
 
-  Future<dynamic> getProfile() async {
+/*  Future<dynamic> getProfile() async {
     CollectionReference _user =
         FirebaseFirestore.instance.collection('profile');
     try {
@@ -150,5 +150,5 @@ class RegisterProvider {
     } catch (e) {
       return false;
     }
-  }
+  }*/
 }
