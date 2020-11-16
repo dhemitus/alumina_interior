@@ -43,7 +43,10 @@ class MyApp extends StatelessWidget {
         '/loginEmail': (BuildContext context) => LoginEmailPage(),
         '/registerEmail': (BuildContext context) => RegisterEmailPage(),
         '/front': (BuildContext context) => FrontPage(),
-        '/welcome': (BuildContext context) => AuthenticationPage()
+        '/welcome': (BuildContext context) => AuthenticationPage(),
+        '/profile': (BuildContext context) => ProfilePage(),
+        '/address': (BuildContext context) => AddressPage(),
+        '/phone': (BuildContext context) => PhonePage()
       },
       theme: ThemeData(
         primarySwatch: Colors.blue,

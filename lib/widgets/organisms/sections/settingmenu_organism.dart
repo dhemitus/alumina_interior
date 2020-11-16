@@ -5,6 +5,8 @@ import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/shared/shared.dart' as Utils;
 
 class SettingMenu extends StatelessWidget {
+  final Function onTap;
+  SettingMenu({this.onTap});
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -12,7 +14,9 @@ class SettingMenu extends StatelessWidget {
         Container(
           height: Utils.getHeight() - 242.0.h,
         ),
-        MenuSetting()
+        MenuSetting(
+          onTap: onTap,
+        )
       ],
     );
   }

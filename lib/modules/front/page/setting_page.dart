@@ -5,6 +5,23 @@ import 'package:alumina/widgets/widgets.dart';
 class SettingPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return SettingMenu();
+    void _onPage(String val) {
+      print(val);
+      switch (val) {
+        case 'profile':
+          Navigator.of(context).pushNamed('/profile');
+          break;
+        case 'address':
+          Navigator.of(context).pushNamed('/address');
+          break;
+        case 'phone number':
+          Navigator.of(context).pushNamed('/phone');
+          break;
+      }
+    }
+
+    return SettingMenu(
+      onTap: _onPage,
+    );
   }
 }

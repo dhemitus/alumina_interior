@@ -22,7 +22,7 @@ class MenuSetting extends StatelessWidget {
             mode: item.isactive
                 ? Styles.StyleType.warning
                 : Styles.StyleType.primary,
-            onTap: onTap,
+            onTap: (context) => onTap(item.name),
           ),
         );
       }).toList(),

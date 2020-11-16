@@ -25,6 +25,10 @@ class Layout4 extends StatelessWidget {
                   child: right,
                 ),
               ),
+              Container(
+                width: 12.0.w,
+                color: Colors.orange,
+              ),
             ],
           ),
         ));
