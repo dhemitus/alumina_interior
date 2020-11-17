@@ -25,7 +25,7 @@ class RegisterPhoneForm extends StatelessWidget {
           child: CapsuleButton(
             text: 'Kirim',
             width: 82.0.w,
-            icon: Iconic.arrowightFFFFFF,
+            icon: Iconic.arrowrightFFFFFF,
             onTap: onSubmit,
           ),
         ),

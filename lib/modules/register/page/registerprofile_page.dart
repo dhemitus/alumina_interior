@@ -36,7 +36,6 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
 
   @override
   void initState() {
-    print('cuk');
     _firstnameController.addListener(_printFirstname);
     _lastnameController.addListener(_printLastName);
     super.initState();

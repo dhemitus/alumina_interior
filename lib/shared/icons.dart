@@ -7,17 +7,22 @@ final Widget arrowleft = SvgPicture.asset(
   semanticsLabel: 'arrow left',
   color: Styles.orangeE23C18,
 );
-final Widget arrowight = SvgPicture.asset('assets/svgs/arrow-right-icon.svg',
+final Widget arrowleft2D415F = SvgPicture.asset(
+  'assets/svgs/arrow-left-icon.svg',
+  semanticsLabel: 'arrow left',
+  color: Styles.blue2D415F,
+);
+final Widget arrowright = SvgPicture.asset('assets/svgs/arrow-right-icon.svg',
     semanticsLabel: 'arrow right', color: Styles.orangeE23C18);
-final Widget arrowightF1C3B9 = SvgPicture.asset(
+final Widget arrowrightF1C3B9 = SvgPicture.asset(
     'assets/svgs/arrow-right-icon.svg',
     semanticsLabel: 'arrow right',
     color: Styles.orangeF1C3B9);
-final Widget arrowightFFFFFF = SvgPicture.asset(
+final Widget arrowrightFFFFFF = SvgPicture.asset(
     'assets/svgs/arrow-right-icon.svg',
     semanticsLabel: 'arrow right',
     color: Colors.white);
-final Widget arrowight2D415F = SvgPicture.asset(
+final Widget arrowright2D415F = SvgPicture.asset(
     'assets/svgs/arrow-right-icon.svg',
     semanticsLabel: 'arrow right',
     color: Styles.blue2D415F);

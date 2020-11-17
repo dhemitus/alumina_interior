@@ -1,9 +1,9 @@
-import 'package:alumina/modules/modules.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/models/models.dart';
+import 'package:alumina/modules/modules.dart';
 
 class RegisterAddressPage extends StatefulWidget {
   @override

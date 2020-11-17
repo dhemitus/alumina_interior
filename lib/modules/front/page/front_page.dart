@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/modules/modules.dart';
+import 'package:alumina/models/models.dart';
 
 class FrontPage extends StatefulWidget {
   @override
@@ -33,9 +34,6 @@ class _FrontPageState extends State<FrontPage> {
 
   @override
   Widget build(BuildContext context) {
-    return FrontDisplayPage(
-      onTab: _onTab,
-      content: _content(),
-    );
+    return FrontDisplayPage(onTab: _onTab, content: _content(), menu: menuTab);
   }
 }

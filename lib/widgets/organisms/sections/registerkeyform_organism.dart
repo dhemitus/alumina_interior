@@ -26,7 +26,7 @@ class RegisterKeyForm extends StatelessWidget {
             mode: Styles.StyleType.warning,
             text: 'Selesai',
             width: 100.0.w,
-            icon: Iconic.arrowightF1C3B9,
+            icon: Iconic.arrowrightF1C3B9,
             onTap: onSubmit,
           ),
         ),

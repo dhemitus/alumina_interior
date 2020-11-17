@@ -12,41 +12,40 @@ class Layout1 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Row(
-          children: <Widget>[
-            Container(
-              width: 42.0.w,
-              color: Colors.red,
-              child: left,
-            ),
-            Expanded(
-              child: Column(
-                children: <Widget>[
-                  Container(
-                    alignment: Alignment.bottomLeft,
-                    height: 52.0.w,
-                    child: top,
-                  ),
-                  Container(
-                    height: 266.0.w,
-                    child: middle,
-                  ),
-                  Container(
-                    alignment: Alignment.topLeft,
-                    child: bottom,
-                  ),
-                ],
+        backgroundColor: Colors.white,
+        body: SingleChildScrollView(
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: <Widget>[
+              Container(
+                width: 42.0.w,
+                child: left,
               ),
-            ),
-            Container(
-              width: 42.0.w,
-              color: Colors.orange,
-            ),
-          ],
-        ),
-      )
-    );
+              Expanded(
+                child: Column(
+                  children: <Widget>[
+                    Container(
+                      alignment: Alignment.bottomLeft,
+                      height: 52.0.w,
+                      child: top,
+                    ),
+                    Container(
+                      height: 266.0.w,
+                      child: middle,
+                    ),
+                    Container(
+                      alignment: Alignment.topLeft,
+                      child: bottom,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                width: 42.0.w,
+                color: Colors.orange,
+              ),
+            ],
+          ),
+        ));
   }
 }
