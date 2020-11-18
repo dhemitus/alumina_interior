@@ -20,27 +20,27 @@ class _AddressPageState extends State<AddressPage> {
   TextEditingController _postcodeController = new TextEditingController();
 
   _printAddress() {
-    setState(() {
-      _address = _addressController.text;
-    });
+//    setState(() {
+    _address = _addressController.text;
+//    });
   }
 
   _printCity() {
-    setState(() {
-      _city = _cityController.text;
-    });
+//    setState(() {
+    _city = _cityController.text;
+//    });
   }
 
   _printProvince() {
-    setState(() {
-      _province = _provinceController.text;
-    });
+//    setState(() {
+    _province = _provinceController.text;
+//    });
   }
 
   _printPostCode() {
-    setState(() {
-      _postcode = _postcodeController.text;
-    });
+//    setState(() {
+    _postcode = _postcodeController.text;
+//    });
   }
 
   @override
@@ -67,6 +67,10 @@ class _AddressPageState extends State<AddressPage> {
   }
 
   void onSubmit() {
+    _address = _addressController.text;
+    _city = _cityController.text;
+    _province = _provinceController.text;
+    _postcode = _postcodeController.text;
     final UserData _user = UserData(
         address: _address,
         city: _city,

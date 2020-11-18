@@ -19,15 +19,15 @@ class _PhonePageState extends State<PhonePage> {
   TextEditingController _keyController = new TextEditingController();
 
   _printPhone() {
-    setState(() {
-      _phone = _phoneController.text;
-    });
+//    setState(() {
+    _phone = _phoneController.text;
+//    });
   }
 
   _printKey() {
-    setState(() {
-      _key = _keyController.text;
-    });
+//    setState(() {
+    _key = _keyController.text;
+//    });
   }
 
   @override
@@ -48,11 +48,15 @@ class _PhonePageState extends State<PhonePage> {
   }
 
   void onVerify() {
+    setState(() {
+      _phone = _phoneController.text;
+    });
     BlocProvider.of<AuthenticationBloc>(context)
         .add(PhoneVerifyAuthentication(phone: _phone));
   }
 
   void onSubmit() {
+    _key = _keyController.text;
     print('set key $_key');
     print(_result.message);
     if (_result.message == 'codeSent') {

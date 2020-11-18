@@ -21,20 +21,19 @@ class _ProfilePageState extends State<ProfilePage> {
   TextEditingController _lastnameController = new TextEditingController();
 
   _printFirstname() {
-    setState(() {
-      _firstName = _firstnameController.text;
-    });
+//    setState(() {
+    _firstName = _firstnameController.text;
+//    });
   }
 
   _printLastName() {
-    setState(() {
-      _lastName = _lastnameController.text;
-    });
+//    setState(() {
+    _lastName = _lastnameController.text;
+//    });
   }
 
   @override
   void initState() {
-    print('cuk');
     _firstnameController.addListener(_printFirstname);
     _lastnameController.addListener(_printLastName);
     super.initState();
@@ -57,6 +56,8 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   void onSubmit() {
+    _firstName = _firstnameController.text;
+    _lastName = _lastnameController.text;
     final UserData _user = UserData(
         firstName: _firstName,
         lastName: _lastName,
@@ -101,7 +102,8 @@ class _ProfilePageState extends State<ProfilePage> {
           onGender: (val) => onGender(val),
           onDate: (context) => onDate(),
           date: _date,
-          firstnameController: _firstnameController..text = _firstName,
+          firstnameController: _firstnameController
+            ..value = TextEditingValue(text: _firstName),
           lastnameController: _lastnameController..text = _lastName,
           onSubmit: (context) => onSubmit(),
         ),
