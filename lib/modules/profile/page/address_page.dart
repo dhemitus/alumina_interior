@@ -91,10 +91,10 @@ class _AddressPageState extends State<AddressPage> {
       return SettingEditPage(
         onTap: (context) => Navigator.of(context).pop(),
         formBox: AddressForm(
-          addressController: _addressController,
-          cityController: _cityController,
-          provinceController: _provinceController,
-          postcodeController: _postcodeController,
+          addressController: _addressController..text = _address,
+          cityController: _cityController..text = _city,
+          provinceController: _provinceController..text = _province,
+          postcodeController: _postcodeController..text = _postcode,
           onSubmit: (context) => onSubmit(),
         ),
       );

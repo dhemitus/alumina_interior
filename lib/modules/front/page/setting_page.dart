@@ -4,12 +4,6 @@ import 'package:alumina/widgets/widgets.dart';
 import 'package:alumina/models/models.dart';
 
 class SettingPage extends StatelessWidget {
-  List<Widget> _list() {
-    List<Widget> _items = [];
-
-    return _items;
-  }
-
   @override
   Widget build(BuildContext context) {
     void _onPage(String val) {

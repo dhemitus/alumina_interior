@@ -17,7 +17,7 @@ class _RegisterProfilePageState extends State<RegisterProfilePage> {
   List<String> _listGender = gender;
   String _valGender, _date, _firstName, _lastName;
   String _picturePath;
-  bool _registered;
+//  bool _registered;
 
   TextEditingController _firstnameController = new TextEditingController();
   TextEditingController _lastnameController = new TextEditingController();

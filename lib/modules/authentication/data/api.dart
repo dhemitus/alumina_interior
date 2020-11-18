@@ -7,7 +7,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 class AuthenticationProvider {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
-  String _verify;
+//  String _verify;
   AuthPhone _result;
 
   Future<UserCredential> googleSignIn() async {
@@ -116,10 +116,10 @@ class AuthenticationProvider {
 
       return this._result;
     } catch (e) {
-      print(e.toString());
+//      print(e.toString());
       _result =
           new AuthPhone(message: e.toString(), phone: phone, result: false);
-      this._verify = e.toString();
+//      this._verify = e.toString();
       return this._result;
     }
   }

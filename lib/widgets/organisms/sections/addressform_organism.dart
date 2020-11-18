@@ -4,10 +4,18 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:alumina/widgets/widgets.dart';
 
 class AddressForm extends StatelessWidget {
-  final TextEditingController addressController, cityController, provinceController, postcodeController;
+  final TextEditingController addressController,
+      cityController,
+      provinceController,
+      postcodeController;
   final Function onSubmit;
 
-  AddressForm({this.addressController, this.cityController, this.provinceController, this.postcodeController, this.onSubmit});
+  AddressForm(
+      {this.addressController,
+      this.cityController,
+      this.provinceController,
+      this.postcodeController,
+      this.onSubmit});
 
   @override
   Widget build(BuildContext context) {
@@ -50,5 +58,6 @@ class AddressForm extends StatelessWidget {
           )
         ],
       ),
-    );  }
+    );
+  }
 }

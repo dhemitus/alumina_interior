@@ -101,8 +101,8 @@ class _ProfilePageState extends State<ProfilePage> {
           onGender: (val) => onGender(val),
           onDate: (context) => onDate(),
           date: _date,
-          firstnameController: _firstnameController,
-          lastnameController: _lastnameController,
+          firstnameController: _firstnameController..text = _firstName,
+          lastnameController: _lastnameController..text = _lastName,
           onSubmit: (context) => onSubmit(),
         ),
       );

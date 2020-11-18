@@ -75,8 +75,14 @@ class _PhonePageState extends State<PhonePage> {
           onTap: (context) => Navigator.of(context).pop(),
           formBox: Column(
             children: [
-              RegisterPhoneForm(),
-              RegisterKeyForm(),
+              RegisterPhoneForm(
+                phoneController: _phoneController..text = _phone,
+                onSubmit: (context) => onVerify(),
+              ),
+              RegisterKeyForm(
+                keyController: _keyController,
+                onSubmit: (context) => onSubmit(),
+              ),
             ],
           ));
     });
