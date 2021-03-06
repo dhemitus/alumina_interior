@@ -53,11 +53,11 @@ class _PhoneVerifyPageState extends State<PhoneVerifyPage> {
 
   void onSubmit() {
     print('set key $_key');
-    print(_result.message);
-    if (_result.message == 'codeSent') {
+    print(_result);
+/*    if (_result.message == 'codeSent') {
       BlocProvider.of<AuthenticationBloc>(context).add(OtpVerifyAuthentication(
           phone: AuthPhone(phone: _phone, verId: _result.verId, otp: _key)));
-    }
+    }*/
   }
 
   @override
@@ -66,6 +66,7 @@ class _PhoneVerifyPageState extends State<PhoneVerifyPage> {
         builder: (BuildContext context, AuthenticationState state) {
       if (state is AuthenticationPhoneVerify) {
         _result = state.phone;
+        print(_result);
         if (_result.message == 'verificationCompleted') {
           WidgetsBinding.instance.addPostFrameCallback((_) {
             Navigator.of(context).pushReplacementNamed('/front');

@@ -80,36 +80,37 @@ class AuthenticationProvider {
       await _auth.verifyPhoneNumber(
           phoneNumber: phone,
           timeout: Duration(seconds: 60),
-          verificationCompleted: (PhoneAuthCredential cred) => {
+          verificationCompleted: (PhoneAuthCredential cred) {
                 _result = new AuthPhone(
                     message: 'verificationCompleted',
                     phone: phone,
-                    result: true)
-//            print('complete');
+                    result: true);
+            print('complete $phone');
 //                this._verify = 'verificationCompleted $phone'
               },
-          verificationFailed: (FirebaseAuthException authException) => {
+          verificationFailed: (FirebaseAuthException authException) {
                 _result = new AuthPhone(
-                    message: 'verificationFailed', phone: phone, result: false)
-//            print('failed');
+                    message: 'verificationFailed', phone: phone, result: false);
+            print('failed $phone');
 //                this._verify = 'verificationFailed $phone'
               },
-          codeSent: (String verId, int forceCodeResend) => {
+          codeSent: (String verId, int forceCodeResend) {
 //            print('sms sent $verId');
                 _result = new AuthPhone(
                     message: 'codeSent',
                     phone: phone,
                     result: true,
-                    verId: verId)
+                    verId: verId);
 
 //                this._verify = 'codeSent $verId'
               },
-          codeAutoRetrievalTimeout: (String verId) => {
+          codeAutoRetrievalTimeout: (String verId) {
+            print('codeAutoRetrievalTimeout $verId');
                 _result = new AuthPhone(
                     message: 'codeAutoRetrievalTimeout',
                     phone: phone,
                     result: false,
-                    verId: verId)
+                    verId: verId);
 //                this._verify = 'codeAutoRetrievalTimeout $verId'
               });
 //      print(this._verify);
